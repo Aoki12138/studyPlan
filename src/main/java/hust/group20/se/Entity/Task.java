@@ -7,7 +7,7 @@ public class Task {
     private String taskName;
     private String taskTheme;
     private Enum<Priority> priority;
-    private Integer alarmFreguency;
+    private Integer alarmFrequency;
     private Date startTime;
     private Date endTime;
     private String description;
@@ -46,12 +46,12 @@ public class Task {
         this.priority = priority;
     }
 
-    public Integer getAlarmFreguency() {
-        return alarmFreguency;
+    public Integer getAlarmFrequency() {
+        return alarmFrequency;
     }
 
-    public void setAlarmFreguency(Integer alarmFreguency) {
-        this.alarmFreguency = alarmFreguency;
+    public void setAlarmFrequency(Integer alarmFrequency) {
+        this.alarmFrequency = alarmFrequency;
     }
 
     public Date getStartTime() {
