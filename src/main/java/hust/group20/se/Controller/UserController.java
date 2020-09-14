@@ -20,5 +20,34 @@ public class UserController {
         return "index";
     }
 
+    @RequestMapping("/signIn")
+    public String showSignInPage(){
+        return "signIn";
+    }
+
+    @RequestMapping("/signUp")
+    public String showSignUpPage(){
+        return "signUp";
+    }
+
+    @RequestMapping("/taskList")
+    public String showTaskListPage(){
+        return "taskList";
+    }
+
+    @RequestMapping("/userInfo")
+    public String showUserInfoPage(){
+        return "userInfo";
+    }
+
+    @RequestMapping("/analysis/day")
+    public String showDayAnalysisPage(){
+        return "analysisByDay";
+    }
+
+    @RequestMapping("/analysis/week")
+    public String showWeekAnalysisPage(){
+        return "analysisByWeek";
+    }
 
 }
