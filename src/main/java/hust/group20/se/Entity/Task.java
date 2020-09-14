@@ -1,6 +1,6 @@
 package hust.group20.se.Entity;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Task {
     private Integer taskID;
@@ -8,8 +8,8 @@ public class Task {
     private String taskTheme;
     private Enum<Priority> priority;
     private Integer alarmFrequency;
-    private Date startTime;
-    private Date endTime;
+    private Timestamp startTime;
+    private Timestamp endTime;
     private String description;
     private Integer evaluation;
     private Integer userID;
@@ -54,19 +54,19 @@ public class Task {
         this.alarmFrequency = alarmFrequency;
     }
 
-    public Date getStartTime() {
+    public Timestamp getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(Timestamp startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public Timestamp getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(Timestamp endTime) {
         this.endTime = endTime;
     }
 
