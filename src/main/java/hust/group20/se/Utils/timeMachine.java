@@ -12,7 +12,7 @@ public class timeMachine {
         DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         try {
             Date date = simpleDateFormat.parse(dateStr);
-            System.out.println(date);
+//            System.out.println(date);
             return new Timestamp(date.getTime());
         }catch (ParseException e){
             e.printStackTrace();

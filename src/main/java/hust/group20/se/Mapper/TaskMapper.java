@@ -3,6 +3,7 @@ package hust.group20.se.Mapper;
 import hust.group20.se.Entity.Priority;
 import hust.group20.se.Entity.Task;
 import hust.group20.se.Entity.User;
+import hust.group20.se.Utils.EnumPriorityTypeHandler;
 import org.apache.ibatis.annotations.*;
 
 import java.sql.Timestamp;
@@ -12,6 +13,7 @@ import java.util.List;
 public interface TaskMapper {
 
     @Select("SELECT * FROM task WHERE task.userID=#{userID}")
+//    @Result(property = "priority",column = "priority",typeHandler= EnumPriorityTypeHandler.class)
     List<Task> getTasksByUserID(Integer userID);
 
     @Select("SELECT count(*) FROM task")

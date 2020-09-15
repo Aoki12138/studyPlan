@@ -1,12 +1,16 @@
 package hust.group20.se.Controller;
 
 import hust.group20.se.Entity.Priority;
+import hust.group20.se.Entity.Task;
 import hust.group20.se.Service.TaskService;
 import hust.group20.se.Service.UserService;
 import hust.group20.se.Utils.timeMachine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -34,10 +38,14 @@ public class UserController {
         return "signUp";
     }
 
-    @RequestMapping("/taskList")
-    public String showTaskListPage(){
+    @GetMapping("/taskList")
+    public String showTaskListPage(Model model){
+        Integer userID = new Integer(1);
+        List<Task> tasks = taskService.getTasksByUserID(userID);
+        model.addAttribute("tasks",tasks);
         return "taskList";
     }
+
 
     @RequestMapping("/userInfo")
     public String showUserInfoPage(){

@@ -6,7 +6,7 @@ public class Task {
     private Integer taskID;
     private String taskName;
     private String taskTheme;
-    private Enum<Priority> priority;
+    private Priority priority;
 //    private Integer alarmFrequency;
     private Timestamp startTime;
     private Timestamp endTime;
@@ -14,7 +14,7 @@ public class Task {
     private Integer evaluation;
     private Integer userID;
 
-    public Task(Integer taskID, String taskName, String taskTheme, Enum<Priority> priority, /*Integer alarmFrequency,*/ Timestamp startTime, Timestamp endTime, String description, Integer evaluation, Integer userID) {
+    public Task(Integer taskID, String taskName, String taskTheme, Priority priority, /*Integer alarmFrequency,*/ Timestamp startTime, Timestamp endTime, String description, Integer evaluation, Integer userID) {
         this.taskID = taskID;
         this.taskName = taskName;
         this.taskTheme = taskTheme;
@@ -51,13 +51,14 @@ public class Task {
         this.taskTheme = taskTheme;
     }
 
-    public Enum<Priority> getPriority() {
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public Priority getPriority() {
         return priority;
     }
 
-    public void setPriority(Enum<Priority> priority) {
-        this.priority = priority;
-    }
 
 //    public Integer getAlarmFrequency() {
 //        return alarmFrequency;
