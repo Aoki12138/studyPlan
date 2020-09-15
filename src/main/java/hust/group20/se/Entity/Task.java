@@ -7,12 +7,25 @@ public class Task {
     private String taskName;
     private String taskTheme;
     private Enum<Priority> priority;
-    private Integer alarmFrequency;
+//    private Integer alarmFrequency;
     private Timestamp startTime;
     private Timestamp endTime;
     private String description;
     private Integer evaluation;
     private Integer userID;
+
+    public Task(Integer taskID, String taskName, String taskTheme, Enum<Priority> priority, /*Integer alarmFrequency,*/ Timestamp startTime, Timestamp endTime, String description, Integer evaluation, Integer userID) {
+        this.taskID = taskID;
+        this.taskName = taskName;
+        this.taskTheme = taskTheme;
+        this.priority = priority;
+//        this.alarmFrequency = alarmFrequency;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.description = description;
+        this.evaluation = evaluation;
+        this.userID = userID;
+    }
 
     public Integer getTaskID() {
         return taskID;
@@ -46,13 +59,13 @@ public class Task {
         this.priority = priority;
     }
 
-    public Integer getAlarmFrequency() {
-        return alarmFrequency;
-    }
-
-    public void setAlarmFrequency(Integer alarmFrequency) {
-        this.alarmFrequency = alarmFrequency;
-    }
+//    public Integer getAlarmFrequency() {
+//        return alarmFrequency;
+//    }
+//
+//    public void setAlarmFrequency(Integer alarmFrequency) {
+//        this.alarmFrequency = alarmFrequency;
+//    }
 
     public Timestamp getStartTime() {
         return startTime;

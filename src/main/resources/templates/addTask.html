@@ -69,12 +69,12 @@
                             <small>开启新任务</small>
                         </div>
                         <div class="body">
-                            <form id="wizard_with_validation" method="POST">
+                            <form id="wizard_with_validation" action="/user/addTask" method="POST">
                                 <h3>基本信息</h3>
                                 <fieldset>
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="name" required>
+                                            <input type="text" class="form-control" name="taskName" required>
                                             <label class="form-label">任务名*</label>
                                         </div>
                                     </div>
@@ -83,13 +83,13 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <select class="form-control" required>
+                                                        <select name="taskTheme" class="form-control" required>
                                                             <option value="">主题*</option>
-                                                            <option value="10">数学</option>
-                                                            <option value="20">英语</option>
-                                                            <option value="30">政治</option>
-                                                            <option value="40">专业课</option>
-                                                            <option value="50">玩</option>
+                                                            <option value="数学">数学</option>
+                                                            <option value="英语">英语</option>
+                                                            <option value="政治">政治</option>
+                                                            <option value="专业课">专业课</option>
+                                                            <option value="其他">其他</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -99,13 +99,13 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <select class="form-control">
-                                                            <option value="">优先级</option>
-                                                            <option value="10">极高</option>
-                                                            <option value="20">高</option>
-                                                            <option value="30">一般</option>
-                                                            <option value="40">低</option>
-                                                            <option value="50">极低</option>
+                                                        <select name="priority" class="form-control" required>
+                                                            <option value="">优先级*</option>
+                                                            <option value="p1">极高</option>
+                                                            <option value="p2">高</option>
+                                                            <option value="p3">一般</option>
+                                                            <option value="p4">低</option>
+                                                            <option value="p5">极低</option>
                                                         </select>
                                                     </div>
                                                 </div>      
@@ -122,7 +122,7 @@
                                                 <div class="form-group">
                                                     <div class="form-line">
                                                         开始于
-                                                        <input type="text" class="datetimepicker form-control" placeholder="选择日期-时间" required>
+                                                        <input type="datetime-local" name="startTime" class="form-control" placeholder="选择日期-时间" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,7 +130,7 @@
                                                 <div class="form-group">
                                                     <div class="form-line">
                                                         结束于
-                                                        <input type="text" class="datetimepicker form-control" placeholder="选择日期-时间">
+                                                        <input type="datetime-local" name="endTime" class="form-control" placeholder="选择日期-时间" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -146,12 +146,13 @@
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        <textarea rows="4" class="form-control no-resize" placeholder="请输入对任务的描述"></textarea>
+                                                        <textarea name="description" rows="4" class="form-control no-resize" placeholder="请输入对任务的描述"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="submit" class=""></button>
                                 </fieldset>
                             </form>
                         </div>
