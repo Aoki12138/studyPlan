@@ -43,7 +43,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Integer addOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Enum<Priority> priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation) {
+    public Integer addOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation) {
         return taskMapper.addOneTaskByAttributes(userID, taskID, taskName, taskTheme, priority, startTime, endTime, description, evaluation);
     }
 
@@ -53,7 +53,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Integer updateOneTask(Task newTask) {
-        return taskMapper.updateOneTask(newTask);
+    public Integer updateOneTaskByClass(Task newTask) {
+        return taskMapper.updateOneTaskByClass(newTask);
+    }
+
+    @Override
+    public Integer updateOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation) {
+        return taskMapper.updateOneTaskByAttributes(userID,taskID,taskName,taskTheme,priority,startTime,endTime,description,evaluation);
     }
 }

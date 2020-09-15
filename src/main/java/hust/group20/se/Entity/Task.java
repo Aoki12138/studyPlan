@@ -14,12 +14,24 @@ public class Task {
     private Integer evaluation;
     private Integer userID;
 
-    public Task(Integer taskID, String taskName, String taskTheme, Priority priority, /*Integer alarmFrequency,*/ Timestamp startTime, Timestamp endTime, String description, Integer evaluation, Integer userID) {
+//    public Task(Integer taskID, String taskName, String taskTheme, Priority priority, Integer alarmFrequency, Timestamp startTime, Timestamp endTime, String description, Integer evaluation, Integer userID) {
+//        this.taskID = taskID;
+//        this.taskName = taskName;
+//        this.taskTheme = taskTheme;
+//        this.priority = priority;
+//        this.alarmFrequency = alarmFrequency;
+//        this.startTime = startTime;
+//        this.endTime = endTime;
+//        this.description = description;
+//        this.evaluation = evaluation;
+//        this.userID = userID;
+//    }
+
+    public Task(Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation, Integer userID) {
         this.taskID = taskID;
         this.taskName = taskName;
         this.taskTheme = taskTheme;
         this.priority = priority;
-//        this.alarmFrequency = alarmFrequency;
         this.startTime = startTime;
         this.endTime = endTime;
         this.description = description;

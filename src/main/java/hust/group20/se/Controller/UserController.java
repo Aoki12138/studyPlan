@@ -38,7 +38,6 @@ public class UserController {
         return "signUp";
     }
 
-
     @RequestMapping("/userInfo")
     public String showUserInfoPage(){
         return "userInfo";
@@ -63,11 +62,32 @@ public class UserController {
     }
 
     @GetMapping("/taskList/delete/{id}")
-    public  String deleteOneStudent(@PathVariable("id") Integer taskID){
+    public  String deleteOneTask(@PathVariable("id") Integer taskID){
         taskService.deleteOneTaskByTaskID(taskID);
         return "redirect:/user/taskList";
     }
 
+    @PostMapping("/taskList/update")
+    @ResponseBody
+    public String updateOneTask(@RequestParam(value = "userID") Integer userID,
+                                @RequestParam(value = "taskID") Integer taskID,
+                                @RequestParam(value = "taskName") String taskName,
+                                @RequestParam(value = "taskTheme") String taskTheme,
+                                @RequestParam(value = "priority") String priority,
+                                @RequestParam(value = "startTime") String startTime,
+                                @RequestParam(value = "endTime") String endTime,
+                                @RequestParam(value = "description") String description,
+                                @RequestParam(value = "evaluation") Integer evaluation){
+        taskService.updateOneTaskByAttributes(userID,taskID,taskName,taskTheme,Priority.valueOf(priority),timeMachine.toTimeStamp(startTime),timeMachine.toTimeStamp(endTime),description,evaluation);
+        return "redirect:/user/taskList";
+    }
+
+    @GetMapping("/taskList/update/{id}")
+    public String updateOneTask(@PathVariable("id") Integer taskID,Model model){
+        Task task = taskService.getTaskByTaskID(taskID);
+        model.addAttribute("oldTask",task);
+        return "updateTask";
+    }
 
     @PostMapping("/addTask")
     @ResponseBody

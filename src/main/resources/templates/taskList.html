@@ -77,7 +77,7 @@
                                             <th>Theme</th>
                                             <th>Task</th>
                                             <th>Start Time</th>
-                                            <th>Finish Time</th>
+                                            <th>End Time</th>
                                             <th>Level</th>
                                             <th>State</th>
                                             <th>Change</th>
@@ -88,7 +88,7 @@
                                             <th>Theme</th>
                                             <th>Task</th>
                                             <th>Start Time</th>
-                                            <th>Finish Time</th>
+                                            <th>End Time</th>
                                             <th>Level</th>
                                             <th>State</th>
                                             <th>Change</th>
@@ -104,7 +104,7 @@
                                             <td>未完成</td>
                                             <td>
                                                 <a th:href="@{'taskList/delete/'+${task.taskID}}" class="btn btn-sm btn-danger deleteBtn">删除</a>
-                                                <a  class="btn btn-sm btn-primary">修改</a>
+                                                <a th:href="@{'taskList/update/'+${task.taskID}}" class="btn btn-sm btn-primary">修改</a>
                                             </td>
                                         </tr>
                                     </tbody>
