@@ -38,14 +38,6 @@ public class UserController {
         return "signUp";
     }
 
-    @GetMapping("/taskList")
-    public String showTaskListPage(Model model){
-        Integer userID = new Integer(1);
-        List<Task> tasks = taskService.getTasksByUserID(userID);
-        model.addAttribute("tasks",tasks);
-        return "taskList";
-    }
-
 
     @RequestMapping("/userInfo")
     public String showUserInfoPage(){
@@ -61,6 +53,21 @@ public class UserController {
     public String showWeekAnalysisPage(){
         return "analysisByWeek";
     }
+
+    @GetMapping("/taskList")
+    public String showTaskListPage(Model model){
+        Integer userID = new Integer(1);
+        List<Task> tasks = taskService.getTasksByUserID(userID);
+        model.addAttribute("tasks",tasks);
+        return "taskList";
+    }
+
+    @GetMapping("/taskList/delete/{id}")
+    public  String deleteOneStudent(@PathVariable("id") Integer taskID){
+        taskService.deleteOneTaskByTaskID(taskID);
+        return "redirect:/user/taskList";
+    }
+
 
     @PostMapping("/addTask")
     @ResponseBody

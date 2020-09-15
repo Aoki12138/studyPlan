@@ -103,7 +103,7 @@
                                             <td th:text="${task.priority.getText()}">重要</td>
                                             <td>未完成</td>
                                             <td>
-                                                <a  class="btn btn-sm btn-danger deleteBtn">删除</a>
+                                                <a th:href="@{'taskList/delete/'+${task.taskID}}" class="btn btn-sm btn-danger deleteBtn">删除</a>
                                                 <a  class="btn btn-sm btn-primary">修改</a>
                                             </td>
                                         </tr>
