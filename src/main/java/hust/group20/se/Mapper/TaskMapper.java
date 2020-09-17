@@ -6,6 +6,7 @@ import hust.group20.se.Entity.User;
 import hust.group20.se.Utils.EnumPriorityTypeHandler;
 import org.apache.ibatis.annotations.*;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -18,6 +19,15 @@ public interface TaskMapper {
 
     @Select("SELECT count(*) FROM task")
     Integer getTotal();
+
+    @Select("SELECT * FROM TASK WHERE (task.startTime>#{now} AND task.startTime<#{lasttime}) ")
+    List<Task> getUnfinTasks(Timestamp now,Timestamp lasttime);
+
+    @Select("SELECT * FROM TASK WHERE (task.startTime>#{firsttime} AND task.endTime<#{now})")
+    List<Task> getFinTasks(Timestamp now,Timestamp firsttime);
+
+    @Select("SELECT * FROM TASK WHERE (task.startTime>#{firsttime} AND task.endTime<#{lasttime})")
+    List<Task> getTasksByTimeStamp(Timestamp firsttime,Timestamp lasttime);
 
     @Select("SELECT max(task.taskID) FROM task")
     Integer getMaxID();

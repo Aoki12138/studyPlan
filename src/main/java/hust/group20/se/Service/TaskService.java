@@ -11,6 +11,12 @@ public interface TaskService {
 
     List<Task> getTasksByUserID(Integer userID);
 
+    List<Task> getUnfinTasks();
+
+    List<Task> getFinTasks();
+
+    List<Task> getTasksByTimeStamp(Timestamp firsttime,Timestamp endtime);
+
     Integer getTotal();
 
     Integer getMaxID();

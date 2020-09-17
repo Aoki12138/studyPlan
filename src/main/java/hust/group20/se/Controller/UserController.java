@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -24,7 +27,11 @@ public class UserController {
 
     //登录之后才能返回用户主页面！
     @GetMapping("/index")
-    public String showMainPage(){
+    public String showMainPage(Model model){
+        List<Task> UnfinTasks = taskService.getUnfinTasks();
+        List<Task> FinTasks = taskService.getFinTasks();
+        model.addAttribute("UnfinTasks",UnfinTasks);
+        model.addAttribute("FinTasks",FinTasks);
         return "index";
     }
 

@@ -81,7 +81,7 @@ function initDonutChart() {
             label: 'Safari',
             value: 18
         }, {
-            label: 'Opera',
+            label: 'zhong',
             value: 12
         },
         {
