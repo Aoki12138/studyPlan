@@ -1,5 +1,6 @@
 package hust.group20.se.ServiceImpl;
 
+import hust.group20.se.Entity.Diary;
 import hust.group20.se.Entity.Priority;
 import hust.group20.se.Entity.Task;
 import hust.group20.se.Entity.User;
@@ -19,6 +20,16 @@ public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private TaskMapper taskMapper;
+
+    @Override
+    public List<Diary> getAllDiary(){
+        return taskMapper.getAllDiary();
+    }
+
+    @Override
+    public List<Diary> getAllDiaryByUserID(Integer userID){
+        return taskMapper.getAllDiaryByUserID(userID);
+    }
 
     @Override
     public List<Task> getTasksByUserID(Integer userID) {
@@ -109,6 +120,12 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Integer updateEvaluation(Integer taskID,Integer evaluation){
         return taskMapper.updateEvaluation(taskID,evaluation);
+    }
+
+    @Override
+    public Integer addDiary(String diaryName,String keyword,String color,String body){
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        return taskMapper.addDiary(diaryName,keyword,color,body,now);
     }
 
     @Override

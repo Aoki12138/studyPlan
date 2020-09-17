@@ -1,5 +1,6 @@
 package hust.group20.se.Controller;
 
+import hust.group20.se.Entity.Diary;
 import hust.group20.se.Entity.Priority;
 import hust.group20.se.Entity.Task;
 import hust.group20.se.Service.TaskService;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.DataInput;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,6 +36,20 @@ public class UserController {
         model.addAttribute("FinTasks",FinTasks);
         return "index";
     }
+
+    @GetMapping("/diaryList")
+    public String showDiaryList(Model model){
+        List<Diary> diaries = taskService.getAllDiary();
+        model.addAttribute("diaries",diaries);
+        return "diaryList";
+    }
+
+    @GetMapping("/addDiary")
+    public String showAddDiaryPage(){
+        return "addDiary";
+    }
+
+
 
     @RequestMapping("/signIn")
     public String showSignInPage(){
@@ -81,16 +97,24 @@ public class UserController {
         return "evaluation";
     }
 
+    //未完成用户ID
+    @PostMapping("/addDiary")
+    public String addDiary(@RequestParam(value = "diaryName") String diaryName,
+                           @RequestParam(value = "keyword") String keyword,
+                           @RequestParam(value = "color") String color,
+                           @RequestParam(value = "body") String body){
+        taskService.addDiary(diaryName,keyword,color,body);
+        return "redirect:/user/diaryList";
+    }
+
     @PostMapping("/evaluation")
-    @ResponseBody
     public String addEvaluation(@RequestParam(value = "taskID")Integer taskID,
                                 @RequestParam(value = "evaluation")Integer evaluation){
         taskService.updateEvaluation(taskID,evaluation);
-        return "/index";
+        return "redirect:/user/index";
     }
 
     @PostMapping("/taskList/update")
-    @ResponseBody
     public String updateOneTask(@RequestParam(value = "userID") Integer userID,
                                 @RequestParam(value = "taskID") Integer taskID,
                                 @RequestParam(value = "taskName") String taskName,
@@ -112,7 +136,6 @@ public class UserController {
     }
 
     @PostMapping("/addTask")
-    @ResponseBody
     public String addOneTask(@RequestParam(value = "taskName") String taskName,
                              @RequestParam(value = "taskTheme") String taskTheme,
                              @RequestParam(value = "priority") String priority,

@@ -1,5 +1,6 @@
 package hust.group20.se.Mapper;
 
+import hust.group20.se.Entity.Diary;
 import hust.group20.se.Entity.Priority;
 import hust.group20.se.Entity.Task;
 import hust.group20.se.Entity.User;
@@ -16,6 +17,14 @@ public interface TaskMapper {
     @Select("SELECT * FROM task WHERE task.userID=#{userID}")
 //    @Result(property = "priority",column = "priority",typeHandler= EnumPriorityTypeHandler.class)
     List<Task> getTasksByUserID(Integer userID);
+
+    @Select("SELECT * FROM diary")
+    List<Diary> getAllDiary();
+
+    @Select("SELECT * FROM diary WHERE diary.userID=#{userID}")
+    List<Diary> getAllDiaryByUserID(Integer userID);
+
+
 
     @Select("SELECT count(*) FROM task")
     Integer getTotal();
@@ -38,11 +47,15 @@ public interface TaskMapper {
     @Select("SELECT max(task.taskID) FROM task")
     Integer getMaxID();
 
+
     @Select("SELECT * FROM task WHERE task.taskID=#{taskID}")
     Task getTaskByTaskID(Integer taskID);
 
     @Insert("INSERT INTO task (task.taskID,task.taskName,task.taskTheme,task.priority,task.startTime,task.endTime,task.description,task.evaluation,task.userID) VALUES (#{task.taskID},#{task.taskName},#{task.taskTheme},#{task.priority},#{task.startTime},#{task.endTime},#{task.description},#{task.evaluation},#{userID})")
     Integer addOneTaskByClass(Integer userID,Task task);
+
+    @Insert("INSERT INTO diary(diary.name,diary.keyword,diary.color,diary.body,diary.createTime) VALUES(#{diaryName},#{keyword},#{color},#{body},#{createTime})")
+    Integer addDiary(String diaryName,String keyword,String color,String body,Timestamp createTime);
 
     @Insert("INSERT INTO task (task.taskID,task.taskName,task.taskTheme,task.priority,task.startTime,task.endTime,task.description,task.evaluation,task.userID) VALUES (#{taskID},#{taskName},#{taskTheme},#{priority},#{startTime},#{endTime},#{description},#{evaluation},#{userID})")
     Integer addOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation);

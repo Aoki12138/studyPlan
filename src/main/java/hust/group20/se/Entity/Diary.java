@@ -8,9 +8,38 @@ public class Diary {
     private String body;
     private String keyword;
     private Timestamp createTime;
+    private String color;
     private Integer userID;
 
 
+    public Diary(Integer diaryID, String diaryName, String body, String keyword, Timestamp createTime, String color, Integer userID) {
+        this.diaryID = diaryID;
+        this.diaryName = diaryName;
+        this.body = body;
+        this.keyword = keyword;
+        this.createTime = createTime;
+        this.color = color;
+        this.userID = userID;
+    }
+
+    public Diary(){
+        this.diaryID = new Integer(1);
+        this.diaryName = "日记";
+        this.body = "内容";
+        this.keyword = "关键字";
+        this.createTime = new Timestamp(System.currentTimeMillis());
+        this.color = "颜色";
+        this.userID = new Integer(1);
+    }
+
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public Integer getDiaryID() {
         return diaryID;

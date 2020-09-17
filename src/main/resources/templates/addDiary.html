@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>学习养成计划</title>
+    <!-- Favicon-->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Bootstrap DatePicker Css -->
+    <link href="/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+    <!-- Bootstrap Select Css -->
+    <link href="/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="/css/themes/all-themes.css" rel="stylesheet" />
+</head>
+
+<body class="theme-red">
+<!-- Page Loader -->
+<div th:replace="~{/commons/pageLoader.html::pageLoader}">
+</div>
+<!-- #END# Page Loader 加载界面 -->
+<!-- Top Bar -->
+<div th:replace="~{/commons/topBar.html::topBar}">
+</div>
+<!-- #Top Bar 顶部栏结束 -->
+<section>
+    <!-- Left Sidebar -->
+    <div th:replace="~{/commons/leftBar.html::leftBar}">
+    </div>
+    <!-- #END# Left Sidebar 左侧侧边栏 -->
+    <!-- Right Sidebar -->
+    <div th:replace="~{/commons/rightBar.html::rightBar}">
+    </div>
+    <!-- #END# Right Sidebar 右侧侧边栏 -->
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            写日记
+                            <small>日记日记 天天要记 一天不记 就会忘记</small>
+                        </h2>
+
+                    </div>
+                    <form action="/user/addDiary" method="post">
+                        <div class="body">
+                            <h2 class="card-inside-title">基本信息</h2>
+                            <div class="row clearfix">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="题目" name="diaryName" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="关键词" name="keyword"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select class="form-control show-tick" name="color">
+                                        <option value="">颜色</option>
+                                        <option value="bg-red" style="background-color: red;">red</option>
+                                        <option value="bg-pink" style="background-color: pink;">pink</option>
+                                        <option value="bg-purple" style="background-color: purple;">purple</option>
+                                        <option value="bg-indigo" style="background-color: indigo;">indigo</option>
+                                        <option value="bg-blue" style="background-color: blue;">blue</option>
+                                        <option value="bg-cyan" style="background-color: cyan;">cyan</option>
+                                        <option value="bg-teal" style="background-color: teal;">teal</option>
+                                        <option value="bg-green" style="background-color: green;">green</option>
+                                        <option value="bg-lime" style="background-color: lime;">lime</option>
+                                        <option value="bg-yellow" style="background-color: yellow;">yellow</option>
+                                        <option value="bg-orange" style="background-color: orange;">orange</option>
+                                        <option value="bg-brown" style="background-color: brown;">brown</option>
+                                        <option value="bg-grey" style="background-color: grey;">grey</option>
+                                        <option value="bg-black " style="background-color: black ;">black</option>
+                                        <option value=" " style="background-color: white;">white</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body">
+                            <h2 class="card-inside-title">内容</h2>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <textarea name="body" rows="1" class="form-control no-resize auto-growth" placeholder="我只记得我忘了（因为没写日记）"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="body" style="text-align: center;">
+                            <div class="button-demo">
+                                <a href="/user/diaryList" class="btn btn-default waves-effect">取消</a>
+                                <button type="submit" class="btn btn-primary waves-effect">确认</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Jquery Core Js -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core Js -->
+<script src="/plugins/bootstrap/js/bootstrap.js"></script>
+
+<!-- Select Plugin Js -->
+<script src="/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+<!-- Slimscroll Plugin Js -->
+<script src="/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+<!-- Waves Effect Plugin Js -->
+<script src="/plugins/node-waves/waves.js"></script>
+
+<!-- Autosize Plugin Js -->
+<script src="/plugins/autosize/autosize.js"></script>
+
+<!-- Moment Plugin Js -->
+<script src="/plugins/momentjs/moment.js"></script>
+
+<!-- Bootstrap Material Datetime Picker Plugin Js -->
+<script src="/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+<!-- Bootstrap Datepicker Plugin Js -->
+<script src="/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+<!-- Custom Js -->
+<script src="/js/admin.js"></script>
+<script src="/js/pages/forms/basic-form-elements.js"></script>
+
+<!-- Demo Js -->
+<script src="/js/demo.js"></script>
+</body>
+
+</html>
