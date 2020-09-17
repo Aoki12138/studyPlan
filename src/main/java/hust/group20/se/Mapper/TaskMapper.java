@@ -20,6 +20,9 @@ public interface TaskMapper {
     @Select("SELECT count(*) FROM task")
     Integer getTotal();
 
+    @Select("SELECT * FROM TASK")
+    List<Task> getAllTasks();
+
     @Select("SELECT * FROM TASK WHERE (task.startTime>#{now} AND task.startTime<#{lasttime}) ")
     List<Task> getUnfinTasks(Timestamp now,Timestamp lasttime);
 
@@ -28,6 +31,9 @@ public interface TaskMapper {
 
     @Select("SELECT * FROM TASK WHERE (task.startTime>#{firsttime} AND task.endTime<#{lasttime})")
     List<Task> getTasksByTimeStamp(Timestamp firsttime,Timestamp lasttime);
+
+    @Select("SELECT * FROM TASK WHERE (task.startTime<#{now}  AND task.endTime>#{mow}")
+    Task getPresentTask(Timestamp now);
 
     @Select("SELECT max(task.taskID) FROM task")
     Integer getMaxID();
@@ -49,4 +55,7 @@ public interface TaskMapper {
 
     @Update("UPDATE task SET task.taskName=#{taskName},task.taskTheme=#{taskTheme},task.priority=#{priority},task.startTime=#{startTime},task.endTime=#{endTime},task.description=#{description},task.evaluation=#{evaluation},task.userID=#{userID} WHERE task.taskID=#{taskID}")
     Integer updateOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation);
+
+    @Update("UPDATE TASK SET task.evaluation=#{evaluation} WHERE task.taskID=#{taskID}")
+    Integer updateEvaluation(Integer taskID,Integer evaluation);
 }

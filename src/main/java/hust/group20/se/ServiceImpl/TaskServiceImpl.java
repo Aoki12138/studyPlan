@@ -26,8 +26,19 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public List<Task> getAllTasks(){
+        return taskMapper.getAllTasks();
+    }
+
+    @Override
     public List<Task> getTasksByTimeStamp(Timestamp firsttime,Timestamp endtime){
         return taskMapper.getTasksByTimeStamp(firsttime, endtime);
+    }
+
+    @Override
+    public Task getPresentTask(){
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        return taskMapper.getPresentTask(now);
     }
 
     @Override
@@ -93,6 +104,11 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Integer updateOneTaskByClass(Task newTask) {
         return taskMapper.updateOneTaskByClass(newTask);
+    }
+
+    @Override
+    public Integer updateEvaluation(Integer taskID,Integer evaluation){
+        return taskMapper.updateEvaluation(taskID,evaluation);
     }
 
     @Override

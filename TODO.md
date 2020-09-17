@@ -12,4 +12,9 @@
     * 与字段evaluation的联动？（现在默认增加一个新任务的evaluation为0）
 
 * ABOUT USER
+
+* Warning
+    *日记功能
+    *对任务的总结（新字段）
+    *任务时长（新字段）
     

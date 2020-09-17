@@ -74,6 +74,21 @@ public class UserController {
         return "redirect:/user/taskList";
     }
 
+    @GetMapping("/evaluation/{id}")
+    public String showEvaluationPage(@PathVariable("id")Integer taskID,Model model){
+        Task presentTask = taskService.getTaskByTaskID(taskID);
+        model.addAttribute("task",presentTask);
+        return "evaluation";
+    }
+
+    @PostMapping("/evaluation")
+    @ResponseBody
+    public String addEvaluation(@RequestParam(value = "taskID")Integer taskID,
+                                @RequestParam(value = "evaluation")Integer evaluation){
+        taskService.updateEvaluation(taskID,evaluation);
+        return "/index";
+    }
+
     @PostMapping("/taskList/update")
     @ResponseBody
     public String updateOneTask(@RequestParam(value = "userID") Integer userID,
