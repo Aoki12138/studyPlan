@@ -37,6 +37,11 @@ public class UserController {
         return "index";
     }
 
+    @GetMapping("/updatePassword")
+    public String showUpdatePassword(){
+        return "updatePassword";
+    }
+
     @GetMapping("/diaryList")
     public String showDiaryList(Model model){
         List<Diary> diaries = taskService.getAllDiary();

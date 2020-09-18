@@ -57,8 +57,9 @@
             </div>
             <!-- Basic Example -->
             <div class="row clearfix">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div th:each="diary:${diaries}">
+
+                    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+                        <div th:each="diary:${diaries}">
                         <div class="card" >
                             <div th:class="'header '+*{diary.color}">
                                 <h2 th:text="${diary.diaryName}">
