@@ -112,6 +112,14 @@ public class UserController {
         return "redirect:/user/diaryList";
     }
 
+    @PostMapping("/userInfo")
+    public String updateUserInfo(@RequestParam(value = "userName") String userName,
+                                 @RequestParam(value = "sex") String sex,
+                                 @RequestParam(value = "email") String email){
+        taskService.updateUserInfo(userName,sex,email);
+        return "redirect:/user/index";
+    }
+
     @PostMapping("/evaluation")
     public String addEvaluation(@RequestParam(value = "taskID")Integer taskID,
                                 @RequestParam(value = "evaluation")Integer evaluation){

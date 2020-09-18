@@ -129,6 +129,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public Integer updateUserInfo(String userName,String sex,String email){
+        return taskMapper.updateUserInfo(userName,sex,email);
+    }
+
+    @Override
     public Integer updateOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation) {
         return taskMapper.updateOneTaskByAttributes(userID,taskID,taskName,taskTheme,priority,startTime,endTime,description,evaluation);
     }

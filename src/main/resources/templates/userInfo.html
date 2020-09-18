@@ -67,45 +67,48 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="body">
-                            <h2 class="card-inside-title">介绍一下自己吧</h2>
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control">
-                                            <label class="form-label">用户名</label>
+                        <form action="/user/userInfo" method="post">
+                            <div class="body">
+                                <h2 class="card-inside-title">介绍一下自己吧</h2>
+                                <div class="row clearfix">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="userName" type="text" class="form-control">
+                                                <label class="form-label">用户名</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="body" style="margin-left:-0.6%;">
-                                    <div style="color:#aaa;">性别</div>
-                                    <div class="demo-radio-button">
-                                        <input name="sex" type="radio" class="radio-col-blue" id="male"  />
-                                        <label for="male">男</label>
-                                        <input name="sex" type="radio" class="radio-col-pink" id="female" />
-                                        <label for="female">女</label>
-                                        <input name="sex" type="radio" class="radio-col-black" id="unknown" checked/>
-                                        <label for="unknown">未知</label>
+                                    <div class="body" style="margin-left:-0.6%;">
+                                        <div style="color:#aaa;">性别</div>
+                                        <div class="demo-radio-button">
+                                            <input name="sex" type="radio" value="male" class="radio-col-blue" id="male"  />
+                                            <label for="male">男</label>
+                                            <input name="sex" type="radio"  value="female" class="radio-col-pink" id="female" />
+                                            <label for="female">女</label>
+                                            <input name="sex" type="radio" value="unknown" class="radio-col-black" id="unknown" checked/>
+                                            <label for="unknown">未知</label>
+                                        </div>
                                     </div>
-                                </div>  
 
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="email" class="form-control">
-                                            <label class="form-label">邮箱</label>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="email" type="email" class="form-control">
+                                                <label class="form-label">邮箱</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="body" style="text-align: center;">
-                            <div class="button-demo">
-                                <a href="/user/updatePassword"type="button" class="btn btn-primary waves-effect">修改密码</a>
-
+                            <div class="body" style="text-align: center;">
+                                <div class="button-demo">
+                                    <a href="/user/updatePassword"type="button" class="btn btn-default waves-effect">修改密码</a>
+                                    <button type="submit" class="btn btn-primary waves-effect">确认</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
