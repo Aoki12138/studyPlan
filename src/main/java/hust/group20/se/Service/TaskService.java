@@ -41,6 +41,14 @@ public interface TaskService {
 
     Integer updateOneTaskByClass(Task newTask);
 
+    List<Task> getTasksTodayByUserID(Integer userID,Timestamp todayTime,Timestamp tomorrowTime);
+
+    List<Task> getTasksFromChosenByTheme(List<Task> list,String theme);
+
+    List<Task> getTasksFromChosenByTime(List<Task> list,Timestamp starttime,Timestamp endtime);
+
+    List<Integer> gatherTime(List<Task> list);
+
 
     Integer updateEvaluation(Integer taskID,Integer evaluation);
 

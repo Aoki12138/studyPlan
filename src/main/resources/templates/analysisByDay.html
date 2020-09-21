@@ -163,7 +163,7 @@
                     </div>
                 </div>
                 <!-- #END# Donut Chart -->
-                
+
                 <!-- Bar Chart -->
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
@@ -180,7 +180,7 @@
 
 
 
-            
+
 
             <div class="row clearfix">
                 <!-- Line Chart -->
@@ -204,11 +204,17 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                what? <small>idk</small>
+                                统计<small>本日数据结算</small>
                             </h2>
                         </div>
                         <div class="body">
-                            nothing
+<!--                            [[${session.WORST}]]-->
+<!--                            [[${session.firsttime}]]-->
+                            [[${testForTime}]]
+                            [[${firsttime}]]
+                        </div>
+                        <div class="body">
+<!--                            [[${session.SMALLEST}]]-->
                         </div>
                     </div>
                 </div>
@@ -229,19 +235,19 @@
                         <div class="body">
                             <div class="row clearfix">
                                 <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
-                                    
+
                                     <div class="panel-group" id="accordion_1" role="tablist" aria-multiselectable="true">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" role="tab" id="headingOne_1">
                                                 <h4 class="panel-title">
                                                     <a role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseOne_1" aria-expanded="true" aria-controls="collapseOne_1">
-                                                        suggestion #1
+                                                        学科建议
                                                     </a>
                                                 </h4>
                                             </div>
                                             <div id="collapseOne_1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_1">
                                                 <div class="panel-body">
-                                                    none
+                                                    [[${smallest}]]
                                                 </div>
                                             </div>
                                         </div>
@@ -250,20 +256,20 @@
                                                 <h4 class="panel-title">
                                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseTwo_1" aria-expanded="false"
                                                        aria-controls="collapseTwo_1">
-                                                        suggestion #2
+                                                        效率建议
                                                     </a>
                                                 </h4>
                                             </div>
                                             <div id="collapseTwo_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_1">
                                                 <div class="panel-body">
-                                                    none
+                                                    [[${worst}]]
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                 </div>
                 <!-- #END# Basic Examples -->
@@ -288,168 +294,109 @@
 
     <!-- Bootstrap Notify Plugin Js -->
     <script src="/plugins/bootstrap-notify/bootstrap-notify.js"></script>
-        
+
 
 
     <!-- Morris Plugin Js -->
     <script src="/plugins/raphael/raphael.min.js"></script>
     <script src="/plugins/morrisjs/morris.js"></script>
 
-    
+
     <!-- Custom Js -->
     <script src="/js/admin.js"></script>
-<!--    <script src="/js/pages/charts/morris.js"></script>-->
+    <!--<script src="/js/pages/charts/morris.js"></script>-->
     <script>
         getMorris('line', 'line_chart');
         getMorris('bar', 'bar_chart');
-        //getMorris('area', 'area_chart');
         getMorris('donut', 'donut_chart');
 
         function getMorris(type,element){
             if (type === 'line') {
+
                 Morris.Line({
                     element: element,
                     data: [{
-                        'period': '01',
-                        'licensed':[[${session.tasks.get(0).evaluation}]]*40,
-                        'sorned': 660,
-                        'nope': 4500
+                        'elapsed': '0:00-6:00',
+                        'evaluation':([[${testForTime}]]/3600).toFixed(2),
+                        'sorned':([[${efffirsttime}]]/3600).toFixed(2)
                     }, {
-                        'period': '02',
-                        'licensed':5000,
-                        'sorned': 629,
-                        'nope':1000
+                        'elapsed': '6:00-12:00',
+                        'evaluation':([[${secondtime}]]/3600).toFixed(2),
+                        'sorned': ([[${effsecondtime}]]/3600).toFixed(2)
                     }, {
-                        'period': '03',
-                        'licensed':5000,
-                        'sorned': 618,
-                        'nope':100
+                        'elapsed': '12:00-18:00',
+                        'evaluation':([[${thirdtime}]]/3600).toFixed(2),
+                        'sorned': ([[${effthirdtime}]]/3600).toFixed(2)
                     }, {
-                        'period': '04',
-                        'licensed':5000,
-                        'sorned': 661,
-                        'nope':10
-                    }, {
-                        'period': '05',
-                        'licensed':5000,
-                        'sorned': 676,
-                        'nope':1
+                        'elapsed': '18:00-24:00',
+                        'evaluation':[[${fourthtime}]]/3600,
+                        'sorned': [[${efffourthtime}]]/3600
                     }],
-                    xkey: 'period',
-                    ykeys: ['licensed', 'sorned','nope'],
-                    labels: ['Licensed', 'Off the road','nope'],
+                    xkey: 'elapsed',
+                    ykeys: ['evaluation', 'sorned'],
+                    labels: ['总时间(h)', '有效时间(h)'],
                     lineColors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)','rgb(210,256,232)'],
-                    lineWidth: 3
+                    lineWidth: 3,
+                    parseTime: false
                 });
             } else if (type === 'bar') {
                 Morris.Bar({
                     element: element,
                     data: [{
-                        x: '2011 Q1',
-                        y: 3,
-                        z: 2
+                        x: '数学',
+                        y: ([[${mathtime}]]/3600).toFixed(2),
+                        z: ([[${effmathtime}]]/3600).toFixed(2)
                     }, {
-                        x: '2011 Q2',
-                        y: 2,
-                        z: null
+                        x: '英语',
+                        y: ([[${englishtime}]]/3600).toFixed(2),
+                        z: ([[${effenglishtime}]]/3600).toFixed(2)
                     }, {
-                        x: '2011 Q3',
-                        y: 0,
-                        z: 2
+                        x: '政治',
+                        y: ([[${politicstime}]]/3600).toFixed(2),
+                        z: ([[${effpoliticstime}]]/3600).toFixed(2)
                     }, {
-                        x: '2011 Q4',
-                        y: 2,
-                        z: 4
+                        x: '专业课',
+                        y: ([[${protime}]]/3600).toFixed(2),
+                        z: ([[${effprotime}]]/3600).toFixed(2)
+                    }, {
+                        x: '其他',
+                        y: ([[${othertime}]]/3600).toFixed(2),
+                        z: ([[${effothertime}]]/3600).toFixed(2)
                     }],
                     xkey: 'x',
                     ykeys: ['y', 'z'],
-                    labels: ['Y', 'Z'],
+                    labels: ['总时间', '有效时间'],
                     barColors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)'],
                 });
-            } else if (type === 'area') {
-                Morris.Area({
-                    element: element,
-                    data: [{
-                        period: '2010 Q1',
-                        iphone: 2666,
-                        ipad: null,
-                        itouch: 2647
-                    }, {
-                        period: '2010 Q2',
-                        iphone: 2778,
-                        ipad: 2294,
-                        itouch: 2441
-                    }, {
-                        period: '2010 Q3',
-                        iphone: 4912,
-                        ipad: 1969,
-                        itouch: 2501
-                    }, {
-                        period: '2010 Q4',
-                        iphone: 3767,
-                        ipad: 3597,
-                        itouch: 5689
-                    }, {
-                        period: '2011 Q1',
-                        iphone: 6810,
-                        ipad: 1914,
-                        itouch: 2293
-                    }, {
-                        period: '2011 Q2',
-                        iphone: 5670,
-                        ipad: 4293,
-                        itouch: 1881
-                    }, {
-                        period: '2011 Q3',
-                        iphone: 4820,
-                        ipad: 3795,
-                        itouch: 1588
-                    }, {
-                        period: '2011 Q4',
-                        iphone: 15073,
-                        ipad: 5967,
-                        itouch: 5175
-                    }, {
-                        period: '2012 Q1',
-                        iphone: 10687,
-                        ipad: 4460,
-                        itouch: 2028
-                    }, {
-                        period: '2012 Q2',
-                        iphone: 8432,
-                        ipad: 5713,
-                        itouch: 1791
-                    }],
-                    xkey: 'period',
-                    ykeys: ['iphone', 'ipad', 'itouch'],
-                    labels: ['iPhone', 'iPad', 'iPod Touch'],
-                    pointSize: 2,
-                    hideHover: 'auto',
-                    lineColors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(0, 150, 136)']
-                });
-            } else if (type === 'donut') {
+            }else if (type === 'donut') {
                 Morris.Donut({
                     element: element,
                     data: [{
-                        label: 'Jam',
-                        value: 25
+                        label: '数学',
+                        value: [[${mathscale}]]
                     }, {
-                        label: 'Frosted',
-                        value: 40
+                        label: '英语',
+                        value: [[${englishscale}]]
                     }, {
-                        label: 'Custard',
-                        value: 25
+                        label: '政治',
+                        value: [[${politicsscale}]]
                     }, {
-                        label: 'Sugar',
-                        value: 10
+                        label: '专业课',
+                        value: [[${proscale}]]
+                    }, {
+                        label: '其他',
+                        value: [[${otherscale}]]
                     }],
-                    colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)'],
+                    colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)','rgb(33, 50, 200)'],
                     formatter: function (y) {
                         return y + '%'
                     }
                 });
             }
         }
+
+
+    </script>
 
     <!-- Demo Js -->
     <script src="/js/demo.js"></script>

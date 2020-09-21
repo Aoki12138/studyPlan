@@ -33,6 +33,9 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="/css/themes/all-themes.css" rel="stylesheet" />
+
+    <!-- 倒计时-->
+    <link href="/css/time_style.css" rel="stylesheet"/>
 </head>
 
 <body class="theme-red">
@@ -190,40 +193,79 @@
                 </div>
                 </a>
                 <a href="/user/addDiary">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box-3 bg-orange hover-zoom-effect">
-                        <div class="icon">
-                            <i class="material-icons">today</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">Diary</div>
-                            <div class="number">添加日记</div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box-3 bg-orange hover-zoom-effect">
+                            <div class="icon">
+                                <i class="material-icons">today</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">Diary</div>
+                                <div class="number">添加日记</div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </a>
             </div>
 
             <div class="row">
-                
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header bg-light-green">
                             <h2>
                                 当前任务 <small>Current Task</small>
                             </h2>
-                            <ul class="header-dropdown m-r-10">
-                                <li>
-                                    <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="rotation" data-loading-color="red">
-                                        <i class="material-icons">power_settings_new</i>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                         <div class="body">
-                            <div class="font-42 font-bold col-red" style="text-align: center">倒计时</div>
-                            <br>
-                            任务描述
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#profile" data-toggle="tab">当前任务</a></li>
+                                <li role="presentation"><a href="#clock" data-toggle="tab">倒计时</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="profile">
+                                    <b>Home Content</b>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
+                                        Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
+                                        pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
+                                        sadipscing mel.
+                                    </p>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="clock">
+                                    <div class="col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+                                        <div class="clock">
+                                            <div class="flip">
+                                                <div class="digital front" data-number="0"></div>
+                                                <div class="digital back" data-number="1"></div>
+                                            </div>
+                                            <div class="flip">
+                                                <div class="digital front" data-number="0"></div>
+                                                <div class="digital back" data-number="1"></div>
+                                            </div>
+                                            <em class="divider">:</em>
+                                            <div class="flip">
+                                                <div class="digital front" data-number="0"></div>
+                                                <div class="digital back" data-number="1"></div>
+                                            </div>
+                                            <div class="flip">
+                                                <div class="digital front" data-number="0"></div>
+                                                <div class="digital back" data-number="1"></div>
+                                            </div>
+                                            <em class="divider">:</em>
+                                            <div class="flip">
+                                                <div class="digital front" data-number="0"></div>
+                                                <div class="digital back" data-number="1"></div>
+                                            </div>
+                                            <div class="flip">
+                                                <div class="digital front" data-number="0"></div>
+                                                <div class="digital back" data-number="1"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -231,14 +273,10 @@
 
             
             <div class="row clearfix">
-                
-                
-
-                
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>今日已完成</h2>
+                            <h2>今日已完成(%)</h2>
                         </div>
                         <div class="body" style="height: 230px;">
 
@@ -411,6 +449,9 @@
     <script src="/js/pages/index.js"></script>
     <script src="/js/pages/cards/colored.js"></script>
     <script src="/js/pages/charts/jquery-knob.js"></script>
+
+    <!--倒计时-->
+    <script src="/js/time_script.js"></script>
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>

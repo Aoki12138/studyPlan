@@ -70,12 +70,10 @@ $(function () {
             //     location.href = '/signUpSuccess'
             // })
             swal({
-                title: "确定添加新任务？",
+                title: "成功添加新任务",
                 type: "success",
-                showCancelButton: true,
                 confirmButtonColor: "#93faeb",
-                confirmButtonText: "修改",
-                cancelButtonText: "取消",
+                confirmButtonText: "确定",
                 closeOnConfirm: false
             });
             $('button, .confirm').click(function () {

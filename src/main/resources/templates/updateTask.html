@@ -63,91 +63,98 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <form class="form-horizontal" action="/user/taskList/update" method="post">
-                            <input type="hidden" th:value="${oldTask.userID}" name="userID">
-                            <input type="hidden" th:value="${oldTask.taskID}" name="taskID">
-                            <input type="hidden" th:value="${oldTask.evaluation}" name="evaluation">
-                            <div class="header">
-                                <h2>
-                                    修改任务
-                                    <small>有内鬼，变更交易</small>
-                                </h2>
-                            </div>
-                            <div class="body">
-                                <h2 class="card-inside-title">基本信息</h2>
-                                <div class="row clearfix">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" th:value="${oldTask.taskName}" class="form-control" name="taskName" placeholder="任务名" required />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <select name="taskTheme" class="form-control show-tick" required>
-                                            <option value="">主题*</option>
-                                            <option value="数学" th:field="${oldTask.taskTheme}">数学</option>
-                                            <option value="英语" th:field="${oldTask.taskTheme}">英语</option>
-                                            <option value="政治" th:field="${oldTask.taskTheme}">政治</option>
-                                            <option value="专业课" th:field="${oldTask.taskTheme}">专业课</option>
-                                            <option value="其他" th:field="${oldTask.taskTheme}">其他</option>
+                        <div class="header">
+                            <h2>
+                                修改任务
+                                <small>update task</small>
+                            </h2>
+                        </div>
 
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <select name="priority" class="form-control show-tick" required>
-                                            <option value="" th:field="${oldTask.priority}">优先级</option>
-                                            <option value="p1" th:field="${oldTask.priority}">极高</option>
-                                            <option value="p2" th:field="${oldTask.priority}">高</option>
-                                            <option value="p3" th:field="${oldTask.priority}">一般</option>
-                                            <option value="p4" th:field="${oldTask.priority}">低</option>
-                                            <option value="p5" th:field="${oldTask.priority}">极低</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="body">
-                                <h2 class="card-inside-title">起止时间</h2>
-                                <div class="row clearfix">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                开始于
-                                                <input type="datetime-local" th:value="${oldTask.startTime}" name="startTime" class="form-control" placeholder="选择日期-时间" required>
-<!--                                                <input type="datetime-local"  name="startTime" class="form-control" placeholder="选择日期-时间" required>-->
+                            <form action="/user/taskList/update" method="post">
+                                <input type="hidden" th:value="${oldTask.userID}" name="userID">
+                                <input type="hidden" th:value="${oldTask.taskID}" name="taskID">
+                                <input type="hidden" th:value="${oldTask.evaluation}" name="evaluation">
+                                <div class="body">
+                                    <h2 class="card-inside-title">基本信息</h2>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" th:value="${oldTask.taskName}" class="form-control" name="taskName" placeholder="任务名" required />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                结束于
-                                                <input type="datetime-local" th:value="${oldTask.endTime}" name="endTime" class="form-control" placeholder="选择日期-时间" required>
-<!--                                                <input type="datetime-local" name="endTime" class="form-control" placeholder="选择日期-时间" required>-->
+                                    <div class="row clearfix">
+                                        <div class="col-sm-6">
+                                            <select name="taskTheme" class="form-control show-tick" required>
+                                                <option value="">主题*</option>
+                                                <option value="数学" th:field="${oldTask.taskTheme}">数学</option>
+                                                <option value="英语" th:field="${oldTask.taskTheme}">英语</option>
+                                                <option value="政治" th:field="${oldTask.taskTheme}">政治</option>
+                                                <option value="专业课" th:field="${oldTask.taskTheme}">专业课</option>
+                                                <option value="其他" th:field="${oldTask.taskTheme}">其他</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select name="priority" class="form-control show-tick" required>
+                                                <option value="" th:field="${oldTask.priority}">优先级</option>
+                                                <option value="p1" th:field="${oldTask.priority}">极高</option>
+                                                <option value="p2" th:field="${oldTask.priority}">高</option>
+                                                <option value="p3" th:field="${oldTask.priority}">一般</option>
+                                                <option value="p4" th:field="${oldTask.priority}">低</option>
+                                                <option value="p5" th:field="${oldTask.priority}">极低</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <h2 class="card-inside-title">起止时间</h2>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    开始于
+                                                    <input type="datetime-local" th:value="${oldTask.startTime}" name="startTime" class="form-control" placeholder="选择日期-时间" required>
+                                                    <!--                                                <input type="datetime-local"  name="startTime" class="form-control" placeholder="选择日期-时间" required>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    结束于
+                                                    <!--                                                <input type="datetime-local" th:value=${oldTask.endTime}" name="endTime" class="form-control" placeholder="选择日期-时间" required>-->
+                                                    <input type="datetime-local" name="endTime" class="form-control" placeholder="选择日期-时间" required>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="body">
-                                <h2 class="card-inside-title">描述</h2>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <textarea rows="4" th:text="${oldTask.description}" name="description" class="form-control no-resize auto-growth" placeholder="我的任务我做主，说它是啥就是啥"></textarea>
+                                <div class="body">
+                                    <h2 class="card-inside-title">描述</h2>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <textarea th:text="${oldTask.description}" name="description" class="form-control no-resize auto-growth" placeholder="我的任务我做主，说它是啥就是啥"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="body" style="text-align: center;">
+                                    <div class="button-demo">
+                                        <a href="/user/taskList" class="btn btn-default waves-effect">取消</a>
+                                        <button type="submit" class="btn btn-primary waves-effect">确认</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="body" style="text-align: center;">
-                                <div class="button-demo">
-                                    <a href="/user/taskList" class="btn btn-default waves-effect">取消</a>
-                                    <button type="submit" class="btn btn-primary waves-effect">确认</button>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
                     </div>
                 </div>
             </div>
-            
         </div>
     </section>
 
