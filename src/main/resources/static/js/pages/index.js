@@ -25,20 +25,20 @@ function initDonutChart() {
     Morris.Donut({
         element: 'donut_chart',
         data: [{
-            label: 'Chrome',
+            label: '数学',
             value: 37
         }, {
-            label: 'Firefox',
+            label: '英语',
             value: 30
         }, {
-            label: 'Safari',
+            label: '政治',
             value: 18
         }, {
-            label: '？？？',
+            label: '专业课',
             value: 12
         },
         {
-            label: 'Other',
+            label: '其他',
             value: 3
         }],
         colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)', 'rgb(96, 125, 139)'],

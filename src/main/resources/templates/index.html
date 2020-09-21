@@ -322,7 +322,7 @@
                                             <th>#</th>
                                             <th>名称</th>
                                             <th>主题</th>
-                                            <th>时长</th>
+                                            <th>优先级</th>
                                             <th>完成度</th>
                                         </tr>
                                     </thead>
@@ -332,7 +332,8 @@
                                             <td th:text="${taskStat.index+1}">1</td>
                                             <td th:text="${task.taskName}">Task A</td>
                                             <td ><span class="label bg-green" th:text="${task.taskTheme}">Doing</span></td>
-                                            <td th:text="${#dates.format(task.endTime,'HH:mm:ss')}">00:00:00</td>
+<!--                                            <td th:text="${#dates.format(task.endTime,'HH:mm:ss')}">00:00:00</td>-->
+                                            <td th:text="${task.priority.getText()}">重要</td>
                                             <td>
                                                 <div class="progress">
                                                     <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" th:style="'width:'+*{task.evaluation}+'%'"></div>
