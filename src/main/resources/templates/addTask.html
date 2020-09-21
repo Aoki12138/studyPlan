@@ -70,6 +70,7 @@
                         </div>
                         <div class="body">
                             <form id="wizard_with_validation" action="/user/addTask" method="POST">
+                                <input type="hidden" th:value="${session['user'].userID}" name="userID">
                                 <h3>基本信息</h3>
                                 <fieldset>
                                     <div class="form-group form-float">

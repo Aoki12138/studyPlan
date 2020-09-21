@@ -56,13 +56,13 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task getPresentTask(){
+    public Task getPresentTask(Integer userID){
         Timestamp now = new Timestamp(System.currentTimeMillis());
-        return taskMapper.getPresentTask(now);
+        return taskMapper.getPresentTask(userID,now);
     }
 
     @Override
-    public List<Task> getUnfinTasks(){
+    public List<Task> getUnfinTasks(Integer userID){
         //现在的时间戳
         Timestamp now = new Timestamp(System.currentTimeMillis());
         //今天23:59:59的时间戳
@@ -73,11 +73,11 @@ public class TaskServiceImpl implements TaskService {
         lastmidnight.set(Calendar.SECOND,59);
         lastmidnight.set(Calendar.MILLISECOND,59);
         Timestamp lasttime = new Timestamp(lastmidnight.getTimeInMillis());
-        return taskMapper.getUnfinTasks(now,lasttime);
+        return taskMapper.getUnfinTasks(userID,now,lasttime);
     }
 
     @Override
-    public List<Task> getFinTasks(){
+    public List<Task> getFinTasks(Integer userID){
         //现在的时间戳
         Timestamp now = new Timestamp(System.currentTimeMillis());
         //今天零点的时间戳
@@ -88,7 +88,7 @@ public class TaskServiceImpl implements TaskService {
         midnight.set(Calendar.SECOND,0);
         midnight.set(Calendar.MILLISECOND,0);
         Timestamp firsttime = new Timestamp(midnight.getTimeInMillis());
-        return taskMapper.getFinTasks(now,firsttime);
+        return taskMapper.getFinTasks(userID,now,firsttime);
     }
 
     @Override
@@ -132,9 +132,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Integer addDiary(String diaryName,String keyword,String color,String body){
+    public Integer addDiary(String diaryName,String keyword,String color,String body,Integer userID){
         Timestamp now = new Timestamp(System.currentTimeMillis());
-        return taskMapper.addDiary(diaryName,keyword,color,body,now);
+        return taskMapper.addDiary(diaryName,keyword,color,body,now,userID);
     }
 
 

@@ -18,7 +18,7 @@ public interface TaskMapper {
 //    @Result(property = "priority",column = "priority",typeHandler= EnumPriorityTypeHandler.class)
     List<Task> getTasksByUserID(Integer userID);
 
-    @Select("SELECT * FROM diary")
+    @Select("SELECT * FROM diary WHERE")
     List<Diary> getAllDiary();
 
     @Select("SELECT * FROM diary WHERE diary.userID=#{userID}")
@@ -32,17 +32,17 @@ public interface TaskMapper {
     @Select("SELECT * FROM TASK")
     List<Task> getAllTasks();
 
-    @Select("SELECT * FROM TASK WHERE (task.startTime>#{now} AND task.startTime<#{lasttime}) ")
-    List<Task> getUnfinTasks(Timestamp now,Timestamp lasttime);
+    @Select("SELECT * FROM TASK WHERE (task.startTime>#{now} AND task.startTime<#{lasttime} AND task.userID=#{userID}) ")
+    List<Task> getUnfinTasks(Integer userID,Timestamp now,Timestamp lasttime);
 
-    @Select("SELECT * FROM TASK WHERE (task.startTime>#{firsttime} AND task.endTime<#{now})")
-    List<Task> getFinTasks(Timestamp now,Timestamp firsttime);
+    @Select("SELECT * FROM TASK WHERE (task.startTime>#{firsttime} AND task.endTime<#{now} AND task.userID=#{userID})")
+    List<Task> getFinTasks(Integer userID,Timestamp now,Timestamp firsttime);
 
     @Select("SELECT * FROM TASK WHERE (task.startTime>#{firsttime} AND task.endTime<#{lasttime})")
     List<Task> getTasksByTimeStamp(Timestamp firsttime,Timestamp lasttime);
 
-    @Select("SELECT * FROM TASK WHERE task.startTime<#{now}  AND task.endTime>#{now}")
-    Task getPresentTask(Timestamp now);
+    @Select("SELECT * FROM TASK WHERE task.startTime<#{now}  AND task.endTime>#{now} AND task.userID=#{userID}")
+    Task getPresentTask(Integer userID,Timestamp now);
 
     @Select("SELECT max(task.taskID) FROM task")
     Integer getMaxID();
@@ -54,8 +54,8 @@ public interface TaskMapper {
     @Insert("INSERT INTO task (task.taskID,task.taskName,task.taskTheme,task.priority,task.startTime,task.endTime,task.description,task.evaluation,task.userID) VALUES (#{task.taskID},#{task.taskName},#{task.taskTheme},#{task.priority},#{task.startTime},#{task.endTime},#{task.description},#{task.evaluation},#{userID})")
     Integer addOneTaskByClass(Integer userID,Task task);
 
-    @Insert("INSERT INTO diary(diary.name,diary.keyword,diary.color,diary.body,diary.createTime) VALUES(#{diaryName},#{keyword},#{color},#{body},#{createTime})")
-    Integer addDiary(String diaryName,String keyword,String color,String body,Timestamp createTime);
+    @Insert("INSERT INTO diary(diary.name,diary.keyword,diary.color,diary.body,diary.createTime,diary.userID) VALUES(#{diaryName},#{keyword},#{color},#{body},#{createTime},#{userID})")
+    Integer addDiary(String diaryName,String keyword,String color,String body,Timestamp createTime,Integer userID);
 
     @Insert("INSERT INTO task (task.taskID,task.taskName,task.taskTheme,task.priority,task.startTime,task.endTime,task.description,task.evaluation,task.userID) VALUES (#{taskID},#{taskName},#{taskTheme},#{priority},#{startTime},#{endTime},#{description},#{evaluation},#{userID})")
     Integer addOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation);

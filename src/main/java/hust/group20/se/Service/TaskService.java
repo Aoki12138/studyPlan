@@ -19,13 +19,13 @@ public interface TaskService {
 
     Long getTotalTime(List<Task> tasks);
 
-    List<Task> getUnfinTasks();
+    List<Task> getUnfinTasks(Integer userID);
 
-    List<Task> getFinTasks();
+    List<Task> getFinTasks(Integer userID);
 
     List<Task> getTasksByTimeStamp(Timestamp firsttime,Timestamp endtime);
 
-    Task getPresentTask();
+    Task getPresentTask(Integer userID);
 
     Integer getTotal();
 
@@ -44,7 +44,7 @@ public interface TaskService {
 
     Integer updateEvaluation(Integer taskID,Integer evaluation);
 
-    Integer addDiary(String diaryName,String keyword,String color,String body);
+    Integer addDiary(String diaryName,String keyword,String color,String body,Integer userID);
 
     Integer updateOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation);
 }
