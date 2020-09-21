@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.io.DataInput;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -581,6 +582,11 @@ public class UserController {
     public String showEvaluationPage(@PathVariable("id")Integer taskID,Model model){
         Task presentTask = taskService.getTaskByTaskID(taskID);
         model.addAttribute("task",presentTask);
+
+        String startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(presentTask.getStartTime());
+        String endTime = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(presentTask.getEndTime());
+        model.addAttribute("startTime",startTime);
+        model.addAttribute("endTime",endTime);
         return "evaluation";
     }
 
@@ -619,10 +625,13 @@ public class UserController {
     @GetMapping("/taskList/update/{id}")
     public String updateOneTask(@PathVariable("id") Integer taskID,Model model){
 
-        //DateTime time = new DateTime(2018,4,23,23, 7,18,888);
         Task task = taskService.getTaskByTaskID(taskID);
         model.addAttribute("oldTask",task);
-        //model.addAttribute("time",time);s
+
+        String startTime = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").format(task.getStartTime());
+        String endTime = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").format(task.getEndTime());
+        model.addAttribute("startTime",startTime);
+        model.addAttribute("endTime",endTime);
         return "updateTask";
     }
 
