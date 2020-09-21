@@ -3,14 +3,17 @@ package hust.group20.se.Controller;
 import hust.group20.se.Entity.Diary;
 import hust.group20.se.Entity.Priority;
 import hust.group20.se.Entity.Task;
+import hust.group20.se.Entity.User;
 import hust.group20.se.Service.TaskService;
 import hust.group20.se.Service.UserService;
 import hust.group20.se.Utils.timeMachine;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.DataInput;
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -60,6 +63,17 @@ public class UserController {
         return "updatePassword";
     }
 
+    @PostMapping("/updatePassword")
+    public String updatePassword(HttpSession session,
+                                 @RequestParam(value = "userPassword") String userPassword){
+
+        User user= (User) session.getAttribute("user");
+
+        userService.updateUserPassword(user.getUserNickName(),userPassword);
+
+        return "redirect:/user/userInfo";
+    }
+
     @GetMapping("/diaryList")
     public String showDiaryList(Model model){
         List<Diary> diaries = taskService.getAllDiary();
@@ -74,23 +88,34 @@ public class UserController {
 
 
 
-    @RequestMapping("/signIn")
-    public String showSignInPage(){
-        return "signIn";
-    }
-
-    @RequestMapping("/signUp")
-    public String showSignUpPage(){
-        return "signUp";
-    }
-
-    @RequestMapping("/userInfo")
+    @GetMapping("/userInfo")
     public String showUserInfoPage(){
+
         return "userInfo";
     }
 
+    @PostMapping("/userInfo")
+    public String updateUserInfo(@RequestParam(value = "userNickName") String userNickName,
+                                 @RequestParam(value = "userSex") Integer userSex,
+                                 @RequestParam(value = "userEmail") String userEmail,
+                                 HttpSession session){
+        userService.updateUserInfo(userNickName,userSex,userEmail);
+
+        session.removeAttribute("user");
+
+        User user= userService.signInCheck(userNickName);
+        session.setAttribute("user",user);
+
+        return "redirect:/user/userInfo";
+    }
+
     @RequestMapping("/analysis/day")
-    public String showDayAnalysisPage(){
+    public String showDayAnalysisPage(HttpSession session){
+
+        Integer num=new Integer(1);
+        List<Task> tasks=taskService.getTasksByUserID(num);
+        session.setAttribute("tasks",tasks);
+
         return "analysisByDay";
     }
 
@@ -128,14 +153,6 @@ public class UserController {
                            @RequestParam(value = "body") String body){
         taskService.addDiary(diaryName,keyword,color,body);
         return "redirect:/user/diaryList";
-    }
-
-    @PostMapping("/userInfo")
-    public String updateUserInfo(@RequestParam(value = "userName") String userName,
-                                 @RequestParam(value = "sex") String sex,
-                                 @RequestParam(value = "email") String email){
-        taskService.updateUserInfo(userName,sex,email);
-        return "redirect:/user/index";
     }
 
     @PostMapping("/evaluation")
@@ -182,4 +199,6 @@ public class UserController {
 
     @GetMapping("/addTask")
     public String showAddTaskPage() { return "addTask"; }
+
+
 }

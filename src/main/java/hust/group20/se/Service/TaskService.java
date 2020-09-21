@@ -41,7 +41,6 @@ public interface TaskService {
 
     Integer updateOneTaskByClass(Task newTask);
 
-    Integer updateUserInfo(String Username,String sex,String email);
 
     Integer updateEvaluation(Integer taskID,Integer evaluation);
 

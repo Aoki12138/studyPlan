@@ -75,90 +75,86 @@
                             </h2>
                         </div>
 
-                            <div class="body">
-                                <form class="form-horizontal" action="/user/evaluation" method="post">
+                        <div class="body">
+                            <form class="form-horizontal" action="/user/evaluation" method="post">
                                 <input type="hidden" th:value="${task.taskID}" name="taskID">
-                                    <div class="body">
-                                <div class="row clearfix">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" th:value="${task.taskName}" class="form-control" placeholder="任务名" disabled/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                    </div>
-                                    <div class="body">
+                                <div class="body">
                                     <div class="row clearfix">
-                                    <div class="col-sm-6">
-                                        <select class="form-control show-tick" disabled>
-                                            <option value="">主题*</option>
-                                            <option value="数学" th:field="${task.taskTheme}">数学</option>
-                                            <option value="英语" th:field="${task.taskTheme}">英语</option>
-                                            <option value="政治" th:field="${task.taskTheme}">政治</option>
-                                            <option value="专业课" th:field="${task.taskTheme}">专业课</option>
-                                            <option value="其他" th:field="${task.taskTheme}">其他</option>
-
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <select class="form-control show-tick" id="adClass" disabled>
-                                            <option value="" th:field="${task.priority}">优先级</option>
-                                            <option value="p1" th:field="${task.priority}">极高</option>
-                                            <option value="p2" th:field="${task.priority}">高</option>
-                                            <option value="p3" th:field="${task.priority}">一般</option>
-                                            <option value="p4" th:field="${task.priority}">低</option>
-                                            <option value="p5" th:field="${task.priority}">极低</option>
-                                        </select>
-                                    </div>
-                                    </div>
-                                    </div>
-
-
-                            <div class="body">
-                                <div class="row clearfix">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                开始于
-                                                <input type="text" class="datetimepicker form-control" placeholder="选择日期-时间" disabled>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" th:value="${task.taskName}" class="form-control" placeholder="任务名" disabled/>
+                                                </div>
                                             </div>
                                         </div>
+                                     </div>
+                                </div>
+                                <div class="body">
+                                    <div class="row clearfix">
+                                        <div class="col-sm-6">
+                                            <select class="form-control show-tick" disabled>
+                                                <option value="">主题*</option>
+                                                <option value="数学" th:field="${task.taskTheme}">数学</option>
+                                                <option value="英语" th:field="${task.taskTheme}">英语</option>
+                                                <option value="政治" th:field="${task.taskTheme}">政治</option>
+                                                <option value="专业课" th:field="${task.taskTheme}">专业课</option>
+                                                <option value="其他" th:field="${task.taskTheme}">其他</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="form-control show-tick" id="adClass" disabled>
+                                                <option value="" th:field="${task.priority}">优先级</option>
+                                                <option value="p1" th:field="${task.priority}">极高</option>
+                                                <option value="p2" th:field="${task.priority}">高</option>
+                                                <option value="p3" th:field="${task.priority}">一般</option>
+                                                <option value="p4" th:field="${task.priority}">低</option>
+                                                <option value="p5" th:field="${task.priority}">极低</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                结束于
-                                                <input type="text" class="datetimepicker form-control" placeholder="选择日期-时间" disabled>
+                                </div>
+                                <div class="body">
+                                    <div class="row clearfix">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    开始于
+                                                    <input type="text" class="datetimepicker form-control" placeholder="选择日期-时间" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    结束于
+                                                    <input type="text" class="datetimepicker form-control" placeholder="选择日期-时间" disabled>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="body">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <textarea rows="1" class="form-control no-resize auto-growth" th:text="${task.description}" placeholder="我的任务我做主，说它是啥就是啥" disabled></textarea>
+                                <div class="body">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea rows="1" class="form-control no-resize auto-growth" th:text="${task.description}" placeholder="我的任务我做主，说它是啥就是啥" disabled></textarea>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="body">
-                                <div class="irs-demo">
+                                <div class="body">
+                                    <div class="irs-demo">
                                     <!-- <b>Start without params</b> -->
-                                    <input type="text" id="range_02" name="evaluation" value="" />
+                                        <input type="text" id="range_02" name="evaluation" value="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="body" style="text-align: center;">
-                                <div class="button-demo">
-                                    <a href="/user/taskList" class="btn btn-default waves-effect">取消</a>
-                                    <button type="submit" class="btn btn-primary waves-effect">确认</button>
+                                <div class="body" style="text-align: center;">
+                                    <div class="button-demo">
+                                        <a href="/user/taskList" class="btn btn-default waves-effect">取消</a>
+                                        <button type="submit" class="btn btn-primary waves-effect">确认</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-
-                        
-                            </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

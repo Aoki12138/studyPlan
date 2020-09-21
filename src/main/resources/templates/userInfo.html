@@ -49,8 +49,99 @@
     <!-- #Top Bar 顶部栏结束 -->
     <section>
         <!-- Left Sidebar -->
-        <div th:replace="~{/commons/leftBar.html::leftBar}">
-        </div>
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    <img src="/images/user.png" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">[[${session['user'].userNickName}]]</div>
+                    <div class="email">[[${session['user'].userEmail}]]</div>
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a class="js-right-sidebar" data-close="true">
+                                    <i class="material-icons">settings</i>
+                                    Themes
+                                </a>
+                            </li>
+                            <li role="separator" class="divider">
+                            </li>
+                            <li>
+                                <a th:href="@{/logout}">
+                                    <i class="material-icons">input</i>
+                                    Sign Out
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- #User Info -->
+
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">WELCOME TO OUR SYSTEM</li>
+                    <li>
+                        <a href="/user/index">
+                            <i class="material-icons">home</i>
+                            <span>Main</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/user/taskList">
+                            <i class="material-icons">widgets</i>
+                            <span>Task List</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a  class="menu-toggle">
+                            <i class="material-icons">pie_chart</i>
+                            <span>Analysis</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/user/analysis/day">ByDay</a>
+                            </li>
+                            <li>
+                                <a href="/user/analysis/week">ByWeek</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="/user/diaryList">
+                            <i class="material-icons">today</i>
+                            <span>Diary</span>
+                        </a>
+                    </li>
+
+
+                    <li class="active">
+                        <a href="/user/userInfo">
+                            <i class="material-icons">assignment</i>
+                            <span>UserInfo</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; 2020 <a>Form Good Study Habit</a>.
+                </div>
+                <div class="version">
+                    <b>Version: </b> 0.0.1
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
         <!-- #END# Left Sidebar 左侧侧边栏 -->
         <!-- Right Sidebar -->
         <div th:replace="~{/commons/rightBar.html::rightBar}">
@@ -67,48 +158,53 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <form action="/user/userInfo" method="post">
-                            <div class="body">
-                                <h2 class="card-inside-title">介绍一下自己吧</h2>
-                                <div class="row clearfix">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input name="userName" type="text" class="form-control">
-                                                <label class="form-label">用户名</label>
+                        <div class="header">
+                            <h2>个人信息修改</h2>
+                        </div>
+                        <div class="body">
+                            <form action="/user/userInfo" method="post">
+                                <div class="body">
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input name="userNickName" type="text" class="form-control" th:value="${session['user'].userNickName}" readonly>
+                                                    <label class="form-label">用户名(unchangeable)</label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="body" style="margin-left:-0.6%;">
-                                        <div style="color:#aaa;">性别</div>
-                                        <div class="demo-radio-button">
-                                            <input name="sex" type="radio" value="male" class="radio-col-blue" id="male"  />
-                                            <label for="male">男</label>
-                                            <input name="sex" type="radio"  value="female" class="radio-col-pink" id="female" />
-                                            <label for="female">女</label>
-                                            <input name="sex" type="radio" value="unknown" class="radio-col-black" id="unknown" checked/>
-                                            <label for="unknown">未知</label>
+                                        <div class="col-sm-12" style="margin-left:-0.6%;">
+                                            <div class="form-group">
+                                                <div style="color:#aaa;">性别</div>
+                                                <div class="demo-radio-button">
+                                                    <input name="userSex" type="radio" th:checked="${session['user'].userSex}==1?1:0" value="1" class="radio-col-blue" id="male"  />
+                                                    <label for="male">男</label>
+                                                    <input name="userSex" type="radio" th:checked="${session['user'].userSex}==0?1:0"  value="0" class="radio-col-pink" id="female" />
+                                                    <label for="female">女</label>
+                                                    <input name="userSex" type="radio" th:checked="${session['user'].userSex}==2?1:0" value="2" class="radio-col-black" id="unknown" />
+                                                    <label for="unknown">未知</label>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input name="email" type="email" class="form-control">
-                                                <label class="form-label">邮箱</label>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input name="userEmail" type="email" th:value="${session['user'].userEmail}" class="form-control">
+                                                    <label class="form-label">邮箱</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="body" style="text-align: center;">
-                                <div class="button-demo">
-                                    <a href="/user/updatePassword"type="button" class="btn btn-default waves-effect">修改密码</a>
-                                    <button type="submit" class="btn btn-primary waves-effect">确认</button>
+                                <div class="body" style="text-align: center;">
+                                    <div class="button-demo">
+                                        <a href="/user/updatePassword"type="button" class="btn btn-default waves-effect">修改密码</a>
+                                        <button type="submit" class="btn btn-primary waves-effect">确认</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
 
+                        </div>
                     </div>
                 </div>
             </div>

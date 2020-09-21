@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
+    <title>Sign In</title>
     <!-- Favicon-->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -33,14 +33,14 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_in" method="POST">
+                <form id="sign_in" action="/signIn" method="post">
                     <div class="msg">登录开始新的一天</div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="y9onghu" placeholder="用户名" required autofocus>
+                            <input th:value="${userNickName}" type="text" class="form-control" name="userNickName" placeholder="用户名" required autofocus>
                         </div>
                     </div>
                     <div class="input-group">
@@ -48,17 +48,18 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" placeholder="密码" required>
+                            <input type="password" class="form-control" name="userPassword" placeholder="密码" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-8">
-                            <a href="/user/signUp">注册！</a>
+                            <a href="/signUp">注册！</a>
                         </div>
                         <div class="col-xs-4">
                             <button class="btn btn-block bg-pink waves-effect" type="submit">登录</button>
                         </div>
                     </div>
+                    <p class="msg font-bold col-pink" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
                 </form>
             </div>
         </div>

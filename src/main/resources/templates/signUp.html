@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign Up | Bootstrap Based Admin Template - Material Design</title>
+    <title>Sign Up</title>
     <!-- Favicon-->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -33,14 +33,14 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_up" method="POST">
+                <form action="/signUp" id="sign_up" method="post">
                     <div class="msg">注册为新用户</div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="namesurname" placeholder="用户名" required autofocus>
+                            <input type="text" class="form-control" name="userNickName" placeholder="用户名" required autofocus>
                         </div>
                     </div>
                     <div class="input-group">
@@ -48,7 +48,7 @@
                             <i class="material-icons">email</i>
                         </span>
                         <div class="form-line">
-                            <input type="email" class="form-control" name="email" placeholder="邮箱" required>
+                            <input type="email" class="form-control" name="userEmail" placeholder="邮箱" required>
                         </div>
                     </div>
                     <div class="input-group">
@@ -56,7 +56,7 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" minlength="6" placeholder="密码" required>
+                            <input type="password" class="form-control" name="userPassword" minlength="6" placeholder="密码" required>
                         </div>
                     </div>
                     <div class="input-group">
@@ -71,6 +71,8 @@
                         <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-pink">
                         <label for="terms">我已阅读 <a href="javascript:void(0);">使用条款</a>.</label>
                     </div>
+
+                    <p class="msg font-bold col-pink " th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
 
                     <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">注册</button>
 

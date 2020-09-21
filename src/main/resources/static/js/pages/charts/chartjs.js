@@ -49,7 +49,7 @@ function getChartJs(type) {
                 }, {
                         label: "My Second dataset",
                         data: [28, 48, 40, 19, 86, 27, 90],
-                        backgroundColor: 'rgba(233, 30, 99, 0.8)'
+                        backgroundColor: 'rgba(233,30,99,0.8)'
                     }]
             },
             options: {

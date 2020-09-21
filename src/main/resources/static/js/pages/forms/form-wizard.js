@@ -62,7 +62,25 @@ $(function () {
             return form.valid();
         },
         onFinished: function (event, currentIndex) {
-            swal("Good job!", "Submitted!", "success");
+            // swal("Good job!", "Submitted!", "success").then(function (){
+            //     document.getElementById("wizard_with_validation").submit();//js原生方式表单提交
+            // });
+            // swal("Good job!", "Submitted!", "success");
+            // $('button:contains("OK")').click(function () {
+            //     location.href = '/signUpSuccess'
+            // })
+            swal({
+                title: "确定添加新任务？",
+                type: "success",
+                showCancelButton: true,
+                confirmButtonColor: "#93faeb",
+                confirmButtonText: "修改",
+                cancelButtonText: "取消",
+                closeOnConfirm: false
+            });
+            $('button, .confirm').click(function () {
+                document.getElementById("wizard_with_validation").submit();//js原生方式表单提交
+            });
         }
     });
 

@@ -66,12 +66,10 @@ public interface TaskMapper {
     @Update("UPDATE task SET task.taskName=#{newTask.taskName},task.taskTheme=#{newTask.taskTheme},task.priority=#{newTask.priority},task.startTime=#{newTask.startTime},task.endTime=#{newTask.endTime},task.description=#{newTask.description},task.evaluation=#{newTask.evaluation},task.userID=#{newTask.userID} WHERE task.taskID=#{newTask.taskID}")
     Integer updateOneTaskByClass(Task newTask);
 
-    @Update("UPDATE USER SET user.UserSex=#{sex},user.UserEmail=#{email} WHERE user.userNickName=#{userName}")
-    Integer updateUserInfo(String userName,String sex,String email);
-
     @Update("UPDATE task SET task.taskName=#{taskName},task.taskTheme=#{taskTheme},task.priority=#{priority},task.startTime=#{startTime},task.endTime=#{endTime},task.description=#{description},task.evaluation=#{evaluation},task.userID=#{userID} WHERE task.taskID=#{taskID}")
     Integer updateOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation);
 
     @Update("UPDATE TASK SET task.evaluation=#{evaluation} WHERE task.taskID=#{taskID}")
     Integer updateEvaluation(Integer taskID,Integer evaluation);
+
 }

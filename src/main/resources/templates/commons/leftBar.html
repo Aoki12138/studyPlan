@@ -3,24 +3,24 @@
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
-            <img src="images/user.png" width="48" height="48" alt="User" />
+            <img src="/images/user.png" width="48" height="48" alt="User" />
         </div>
         <div class="info-container">
-            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">John Doe</div>
-            <div class="email">john.doe@example.com</div>
+            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">[[${session['user'].userNickName}]]</div>
+            <div class="email">[[${session['user'].userEmail}]]</div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
                     <li>
                         <a class="js-right-sidebar" data-close="true">
                             <i class="material-icons">settings</i>
-                            Settings
+                            Themes
                         </a>
                     </li>
                     <li role="separator" class="divider">
                     </li>
                     <li>
-                        <a href="/user/signIn">
+                        <a th:href="@{/logout}">
                             <i class="material-icons">input</i>
                             Sign Out
                         </a>
@@ -35,7 +35,7 @@
     <div class="menu">
         <ul class="list">
             <li class="header">WELCOME TO OUR SYSTEM</li>
-            <li class="active">
+            <li>
                 <a href="/user/index">
                     <i class="material-icons">home</i>
                     <span>Main</span>
@@ -62,6 +62,14 @@
                     </li>
                 </ul>
             </li>
+
+            <li>
+                <a href="/user/diaryList">
+                    <i class="material-icons">today</i>
+                    <span>Diary</span>
+                </a>
+            </li>
+
 
             <li>
                 <a href="/user/userInfo">
