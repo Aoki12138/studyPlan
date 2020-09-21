@@ -605,7 +605,7 @@ public class UserController {
     public String addEvaluation(@RequestParam(value = "taskID")Integer taskID,
                                 @RequestParam(value = "evaluation")Integer evaluation){
         taskService.updateEvaluation(taskID,evaluation);
-        return "redirect:/user/index";
+        return "redirect:/user/taskList";
     }
 
     @PostMapping("/taskList/update")
