@@ -32,6 +32,24 @@ public class UserController {
     public String showMainPage(Model model){
         List<Task> UnfinTasks = taskService.getUnfinTasks();
         List<Task> FinTasks = taskService.getFinTasks();
+//        List<String>
+        Long totaltime1 = taskService.getTotalTime(UnfinTasks);
+        Long totaltime2 = taskService.getTotalTime(FinTasks);
+        Long totaltime = totaltime1 + totaltime2;
+        Task presentTask = taskService.getPresentTask();
+        if(presentTask!=null){
+            totaltime += presentTask.getEndTime().getTime()-presentTask.getStartTime().getTime();
+        }
+
+        model.addAttribute("totaltime",totaltime/60000);
+        model.addAttribute("Fintotaltime",totaltime2/60000);
+        if(totaltime!=0){
+            model.addAttribute("finProportion",totaltime2*100/totaltime);
+        }
+        else{
+            model.addAttribute("finProportion",100);
+        }
+
         model.addAttribute("UnfinTasks",UnfinTasks);
         model.addAttribute("FinTasks",FinTasks);
         return "index";

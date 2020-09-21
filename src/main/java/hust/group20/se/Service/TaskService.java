@@ -17,6 +17,8 @@ public interface TaskService {
 
     List<Task> getAllTasks();
 
+    Long getTotalTime(List<Task> tasks);
+
     List<Task> getUnfinTasks();
 
     List<Task> getFinTasks();

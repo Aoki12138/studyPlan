@@ -147,7 +147,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>待完成任务统计</h2>
+                            <h2>今日已完成</h2>
                         </div>
                         <div class="body" style="height: 230px;">
 
@@ -155,8 +155,17 @@
                             
                             <div class="row clearfix">                                
                                 <div class="col-md-offset-4 col-lg-offset-4">
-                                    <input type="text" class="knob" value="86" data-width="125" data-height="125" data-thickness="0.25" data-fgColor="#9C27B0"
+                                    <input type="text" class="knob" th:value="${finProportion}" data-width="125" data-height="125" data-thickness="0.25" data-fgColor="#9C27B0"
                                             data-anglearc="250" data-angleoffset="-125" readonly>
+                                </div>
+                                <div class="body" style="text-align: center">
+                                    <span class="label label-primary">Primary</span>
+                                    <span th:text="${totaltime}"></span>
+                                    <span>m</span>
+                                    <span class="label label-success">Success</span>
+                                    <span th:text="${Fintotaltime}"></span>
+                                    <span>m</span>
+
                                 </div>
                                 
                             </div>

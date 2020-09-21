@@ -27,6 +27,15 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public Long getTotalTime(List<Task> tasks){
+        Long totaltime = 0L;
+        for(int i=0;i<tasks.size();i++){
+            totaltime += tasks.get(i).getEndTime().getTime()-tasks.get(i).getStartTime().getTime();
+        }
+        return totaltime;
+    }
+
+    @Override
     public List<Diary> getAllDiaryByUserID(Integer userID){
         return taskMapper.getAllDiaryByUserID(userID);
     }

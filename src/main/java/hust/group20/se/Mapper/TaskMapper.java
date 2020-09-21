@@ -41,7 +41,7 @@ public interface TaskMapper {
     @Select("SELECT * FROM TASK WHERE (task.startTime>#{firsttime} AND task.endTime<#{lasttime})")
     List<Task> getTasksByTimeStamp(Timestamp firsttime,Timestamp lasttime);
 
-    @Select("SELECT * FROM TASK WHERE (task.startTime<#{now}  AND task.endTime>#{mow}")
+    @Select("SELECT * FROM TASK WHERE task.startTime<#{now}  AND task.endTime>#{now}")
     Task getPresentTask(Timestamp now);
 
     @Select("SELECT max(task.taskID) FROM task")
