@@ -71,6 +71,7 @@
 
                     </div>
                     <form action="/user/addDiary" method="post">
+                        <input type="hidden" name="userID" th:value="${session['user'].userID}"/>
                         <div class="body">
                             <h2 class="card-inside-title">基本信息</h2>
                             <div class="row clearfix">

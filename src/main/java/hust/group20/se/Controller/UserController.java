@@ -33,14 +33,17 @@ public class UserController {
 
     //登录之后才能返回用户主页面！
     @GetMapping("/index")
-    public String showMainPage(Model model){
-        List<Task> UnfinTasks = taskService.getUnfinTasks();
-        List<Task> FinTasks = taskService.getFinTasks();
-//        List<String>
+    public String showMainPage(Model model,HttpSession session){
+        User user = (User)session.getAttribute("user");
+        Integer userID = user.getUserID();
+        List<Task> UnfinTasks = taskService.getUnfinTasks(userID);
+        List<Task> FinTasks = taskService.getFinTasks(userID);
+
+
         Long totaltime1 = taskService.getTotalTime(UnfinTasks);
         Long totaltime2 = taskService.getTotalTime(FinTasks);
         Long totaltime = totaltime1 + totaltime2;
-        Task presentTask = taskService.getPresentTask();
+        Task presentTask = taskService.getPresentTask(userID);
         if(presentTask!=null){
             totaltime += presentTask.getEndTime().getTime()-presentTask.getStartTime().getTime();
         }
@@ -76,8 +79,11 @@ public class UserController {
     }
 
     @GetMapping("/diaryList")
-    public String showDiaryList(Model model){
-        List<Diary> diaries = taskService.getAllDiary();
+    public String showDiaryList(Model model,HttpSession session){
+        User user = (User)session.getAttribute("user");
+        Integer userID = user.getUserID();
+
+        List<Diary> diaries = taskService.getAllDiaryByUserID(userID);
         model.addAttribute("diaries",diaries);
         return "diaryList";
     }
@@ -558,9 +564,9 @@ public class UserController {
     }
 
     @GetMapping("/taskList")
-    public String showTaskListPage(Model model){
-        Integer userID = new Integer(1);
-        List<Task> tasks = taskService.getTasksByUserID(userID);
+    public String showTaskListPage(Model model,HttpSession session){
+        User user = (User)session.getAttribute("user");
+        List<Task> tasks = taskService.getTasksByUserID(user.getUserID());
         model.addAttribute("tasks",tasks);
         return "taskList";
     }
@@ -583,8 +589,9 @@ public class UserController {
     public String addDiary(@RequestParam(value = "diaryName") String diaryName,
                            @RequestParam(value = "keyword") String keyword,
                            @RequestParam(value = "color") String color,
-                           @RequestParam(value = "body") String body){
-        taskService.addDiary(diaryName,keyword,color,body);
+                           @RequestParam(value = "body") String body,
+                           @RequestParam(value = "userID") Integer userID ){
+        taskService.addDiary(diaryName,keyword,color,body,userID);
         return "redirect:/user/diaryList";
     }
 
@@ -617,14 +624,14 @@ public class UserController {
     }
 
     @PostMapping("/addTask")
-    public String addOneTask(@RequestParam(value = "taskName") String taskName,
+    public String addOneTask(@RequestParam(value="userID") Integer userID,
+                             @RequestParam(value = "taskName") String taskName,
                              @RequestParam(value = "taskTheme") String taskTheme,
                              @RequestParam(value = "priority") String priority,
                              @RequestParam(value = "startTime") String startTime,
                              @RequestParam(value = "endTime") String endTime,
                              @RequestParam(value = "description") String description){
 
-        Integer userID = new Integer(1);
         Integer newTaskID = taskService.getMaxID()+1;
         taskService.addOneTaskByAttributes(userID,newTaskID,taskName,taskTheme,Priority.valueOf(priority),timeMachine.toTimeStamp(startTime),timeMachine.toTimeStamp(endTime),description,0);
         return "redirect:/user/index";
