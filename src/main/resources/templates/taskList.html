@@ -192,7 +192,7 @@
                                             <td th:text="${#dates.format(task.startTime,'yyyy/MM/dd/HH:mm:ss')}">0:00</td>
                                             <td th:text="${#dates.format(task.endTime,'yyyy/MM/dd/HH:mm:ss')}">0:00</td>
                                             <td th:text="${task.priority.getText()}">重要</td>
-                                            <td>未完成</td>
+                                            <td>(evaluation)</td>
                                             <td>
                                                 <a th:href="@{'taskList/delete/'+${task.taskID}}" class="btn btn-sm btn-danger deleteBtn">删除</a>
                                                 <a th:href="@{'taskList/update/'+${task.taskID}}" class="btn btn-sm btn-primary">修改</a>

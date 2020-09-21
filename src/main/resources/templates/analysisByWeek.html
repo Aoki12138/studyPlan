@@ -145,7 +145,6 @@
 
     <section class="content">
         <div class="container-fluid">
-
             <div class="block-header">
                 <h2>ANALYSIS BY WEEK</h2>
             </div>
@@ -162,7 +161,7 @@
                     </div>
                 </div>
 
-                
+
                 <!-- Bar Chart -->
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
@@ -192,16 +191,16 @@
                     </div>
                 </div>
                 <!-- #END# Radar Chart -->
-               <!-- Line Chart -->
-               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <!-- Line Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="card" style="height: 360px;">
                         <div class="header">
                             <h2>
-                                what? <small>idk</small>
+                                统计 <small>本周数据结算</small>
                             </h2>
                         </div>
                         <div class="body">
-                            nothing
+                            [[${WORSTWEEK}]]
                         </div>
                     </div>
                 </div>
@@ -209,8 +208,8 @@
             </div>
 
             <div class="row clearfix">
-               <!-- Line Chart -->
-               <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
+                <!-- Line Chart -->
+                <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>LINE CHART</h2>
@@ -229,11 +228,11 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                what? <small>idk</small>
+                                统计<small>本周数据结算</small>
                             </h2>
                         </div>
                         <div class="body">
-                            nothing
+                            [[${SMALLESTWEEK}]]
                         </div>
                     </div>
                 </div>
@@ -263,11 +262,158 @@
     <!-- Chart Plugins Js -->
     <script src="/plugins/chartjs/Chart.bundle.js"></script>
 
-    
+
     <!-- Custom Js -->
     <script src="/js/admin.js"></script>
-    <script src="/js/pages/charts/chartjs.js"></script>
+    <!--<script src="/js/pages/charts/chartjs.js"></script>-->
 
+    <script in:line="javascrpit">
+        function myFunction(){
+            new Chart(document.getElementById("line_chart_chartjs").getContext("2d"), getChartJs('line'));
+            new Chart(document.getElementById("bar_chart_chartjs").getContext("2d"), getChartJs('bar'));
+            new Chart(document.getElementById("radar_chart_chartjs").getContext("2d"), getChartJs('radar'));
+            new Chart(document.getElementById("pie_chart_chartjs").getContext("2d"), getChartJs('pie'));
+        }
+        function getChartJs(type){
+            //每周各科目的学习时间占比
+            var num1=[[${mathscaleWeek}]];
+            var num2=[[${englishscaleWeek}]];
+            var num3=[[${politicsscaleWeek}]];
+            var num4=[[${proscaleWeek}]];
+            var num5=[[${otherscaleWeek}]];
+
+            //每周各科目的学习时间及有效学习时间
+            var tim1=[[${mathtimeWeek}]];
+            var tim1ef=[[${effmathtimeWeek}]];
+            var tim2=[[${englishtimeWeek}]];
+            var tim2ef=[[${effenglishtimeWeek}]];
+            var tim3=[[${politicstimeWeek}]];
+            var tim3ef=[[${effpoliticstimeWeek}]];
+            var tim4=[[${protimeWeek}]];
+            var tim4ef=[[${effprotimeWeek}]];
+            var tim5=[[${othertimeWeek}]];
+            var tim5ef=[[${effothertimeWeek}]];
+
+            var day1=[[${Mondaytime}]];
+            var day2=[[${Tuesdaytime}]];
+            var day3=[[${Wednesdaytime}]];
+            var day4=[[${Thursdaytime}]];
+            var day5=[[${Fridaytime}]];
+            var day6=[[${Saturdaytime}]];
+            var day7=[[${Sundaytime}]];
+
+            var day1ef=[[${effMondaytime}]];
+            var day2ef=[[${effTuesdaytime}]];
+            var day3ef=[[${effWednesdaytime}]];
+            var day4ef=[[${effThursdaytime}]];
+            var day5ef=[[${effFridaytime}]];
+            var day6ef=[[${effSaturdaytime}]];
+            var day7ef=[[${effSundaytime}]];
+
+            var config = null;
+            if (type === 'line') {
+                config = {
+                    type: 'line',
+                    data: {
+                        labels: ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
+                        datasets: [{
+                            label: "My First dataset",
+                            data: [(day1/3600).toFixed(2),(day2/3600).toFixed(2),(day3/3600).toFixed(2),(day4/3600).toFixed(2),(day5/3600).toFixed(2),(day6/3600).toFixed(2),day7/3600],
+                            borderColor: 'rgba(0, 188, 212, 0.75)',
+                            backgroundColor: 'rgba(0, 188, 212, 0.3)',
+                            pointBorderColor: 'rgba(0, 188, 212, 0)',
+                            pointBackgroundColor: 'rgba(0, 188, 212, 0.9)',
+                            pointBorderWidth: 1
+                        },{
+                            label: "My Second dataset",
+                            data: [(day1ef/3600).toFixed(2),(day2ef/3600).toFixed(2),(day3ef/3600).toFixed(2),(day4ef/3600).toFixed(2),(day5ef/3600).toFixed(2),(day6ef/3600).toFixed(2),day7ef/3600],
+                            borderColor: 'rgba(233, 30, 99, 0.75)',
+                            backgroundColor: 'rgba(233, 30, 99, 0.3)',
+                            pointBorderColor: 'rgba(233, 30, 99, 0)',
+                            pointBackgroundColor: 'rgba(233, 30, 99, 0.9)',
+                            pointBorderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        legend: false
+                    }
+                }
+            }
+            else if (type === 'bar') {
+                config = {
+                    type: 'bar',
+                    data: {
+                        labels: ["数学", "英语", "政治", "专业课", "其他"],
+                        datasets: [{
+                            label: "My First dataset",
+                            data: [(tim1/3600).toFixed(2),(tim2/3600).toFixed(2),(tim3/3600).toFixed(2),(tim4/3600).toFixed(2),((tim5/3600).toFixed(2))],
+                            backgroundColor: 'rgba(0, 188, 212, 0.8)'
+                        },{
+                            label: "My Second dataset",
+                            data: [(tim1ef/3600).toFixed(2),(tim2ef/3600).toFixed(2),(tim3ef/3600).toFixed(2),(tim4ef/3600).toFixed(2),tim5ef/3600],
+                            backgroundColor: 'rgba(233, 30, 99, 0.8)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        legend: false
+                    }
+                }
+            }
+            else if (type === 'radar') {
+                config = {
+                    type: 'radar',
+                    data: {
+                        labels: ["数学", "英语", "政治", "专业课", "其他"],
+                        datasets: [{
+                            label: "完成度",
+                            data: [(tim1ef*100/tim1).toFixed(2),(tim2ef*100/tim2).toFixed(2),(tim3ef*100/tim3).toFixed(2),(tim4ef*100/tim4).toFixed(2),tim5ef*100/tim5],
+                            borderColor: 'rgba(0, 188, 212, 0.8)',
+                            backgroundColor: 'rgba(0, 188, 212, 0.5)',
+                            pointBorderColor: 'rgba(0, 188, 212, 0)',
+                            pointBackgroundColor: 'rgba(0, 188, 212, 0.8)',
+                            pointBorderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        legend: false
+                    }
+                }
+            }
+            else if (type === 'pie') {
+                config = {
+                    type: 'pie',
+                    data: {
+                        datasets: [{
+                            data: [num1,num2,num3,num4,num5],
+                            backgroundColor: [
+                                "rgb(233, 30, 99)",
+                                "rgb(0, 188, 212)",
+                                "rgb(180, 0, 60)",
+                                "rgb(80, 220, 120)",
+                                "rgb(255, 193, 7)"
+                            ],
+                        }],
+                        labels: [
+                            "数学",
+                            "英语",
+                            "政治",
+                            "专业课",
+                            "其它"
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        legend: false
+                    }
+                }
+            }
+            return config;
+        }
+        myFunction();
+    </script>
 
     <!-- Demo Js -->
     <script src="/js/demo.js"></script>
