@@ -616,9 +616,8 @@ public class UserController {
                                 @RequestParam(value = "priority") String priority,
                                 @RequestParam(value = "startTime") String startTime,
                                 @RequestParam(value = "endTime") String endTime,
-                                @RequestParam(value = "description") String description,
-                                @RequestParam(value = "evaluation") Integer evaluation){
-        taskService.updateOneTaskByAttributes(userID,taskID,taskName,taskTheme,Priority.valueOf(priority),timeMachine.toTimeStamp(startTime),timeMachine.toTimeStamp(endTime),description,evaluation);
+                                @RequestParam(value = "description") String description){
+        taskService.updateOneTaskByAttributes(userID,taskID,taskName,taskTheme,Priority.valueOf(priority),timeMachine.toTimeStamp(startTime),timeMachine.toTimeStamp(endTime),description);
         return "redirect:/user/taskList";
     }
 
@@ -645,7 +644,7 @@ public class UserController {
                              @RequestParam(value = "description") String description){
 
         Integer newTaskID = taskService.getMaxID()+1;
-        taskService.addOneTaskByAttributes(userID,newTaskID,taskName,taskTheme,Priority.valueOf(priority),timeMachine.toTimeStamp(startTime),timeMachine.toTimeStamp(endTime),description,0);
+        taskService.addOneTaskByAttributes(userID,newTaskID,taskName,taskTheme,Priority.valueOf(priority),timeMachine.toTimeStamp(startTime),timeMachine.toTimeStamp(endTime),description);
         return "redirect:/user/index";
     }
 

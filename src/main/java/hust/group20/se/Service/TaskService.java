@@ -35,7 +35,7 @@ public interface TaskService {
 
     Integer addOneTaskByClass(Integer userID, Task task);
 
-    Integer addOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation);
+    Integer addOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description);
 
     boolean deleteOneTaskByTaskID(Integer taskID);
 
@@ -54,5 +54,5 @@ public interface TaskService {
 
     Integer addDiary(String diaryName,String keyword,String color,String body,Integer userID);
 
-    Integer updateOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation);
+    Integer updateOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description);
 }

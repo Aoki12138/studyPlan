@@ -52,23 +52,23 @@ public interface TaskMapper {
     @Select("SELECT * FROM task WHERE task.taskID=#{taskID}")
     Task getTaskByTaskID(Integer taskID);
 
-    @Insert("INSERT INTO task (task.taskID,task.taskName,task.taskTheme,task.priority,task.startTime,task.endTime,task.description,task.evaluation,task.userID) VALUES (#{task.taskID},#{task.taskName},#{task.taskTheme},#{task.priority},#{task.startTime},#{task.endTime},#{task.description},#{task.evaluation},#{userID})")
+    @Insert("INSERT INTO task (task.taskID,task.taskName,task.taskTheme,task.priority,task.startTime,task.endTime,task.description,task.userID) VALUES (#{task.taskID},#{task.taskName},#{task.taskTheme},#{task.priority},#{task.startTime},#{task.endTime},#{task.description},#{userID})")
     Integer addOneTaskByClass(Integer userID,Task task);
 
-    @Insert("INSERT INTO diary(diary.name,diary.keyword,diary.color,diary.body,diary.createTime,diary.userID) VALUES(#{diaryName},#{keyword},#{color},#{body},#{createTime},#{userID})")
+    @Insert("INSERT INTO diary(diary.diaryName,diary.keyword,diary.color,diary.body,diary.createTime,diary.userID) VALUES(#{diaryName},#{keyword},#{color},#{body},#{createTime},#{userID})")
     Integer addDiary(String diaryName,String keyword,String color,String body,Timestamp createTime,Integer userID);
 
-    @Insert("INSERT INTO task (task.taskID,task.taskName,task.taskTheme,task.priority,task.startTime,task.endTime,task.description,task.evaluation,task.userID) VALUES (#{taskID},#{taskName},#{taskTheme},#{priority},#{startTime},#{endTime},#{description},#{evaluation},#{userID})")
-    Integer addOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation);
+    @Insert("INSERT INTO task (task.taskID,task.taskName,task.taskTheme,task.priority,task.startTime,task.endTime,task.description,task.userID) VALUES (#{taskID},#{taskName},#{taskTheme},#{priority},#{startTime},#{endTime},#{description},#{userID})")
+    Integer addOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description);
 
     @Delete("DELETE FROM task WHERE task.taskID=#{taskID}")
     boolean deleteOneTaskByTaskID(Integer taskID);
 
-    @Update("UPDATE task SET task.taskName=#{newTask.taskName},task.taskTheme=#{newTask.taskTheme},task.priority=#{newTask.priority},task.startTime=#{newTask.startTime},task.endTime=#{newTask.endTime},task.description=#{newTask.description},task.evaluation=#{newTask.evaluation},task.userID=#{newTask.userID} WHERE task.taskID=#{newTask.taskID}")
+    @Update("UPDATE task SET task.taskName=#{newTask.taskName},task.taskTheme=#{newTask.taskTheme},task.priority=#{newTask.priority},task.startTime=#{newTask.startTime},task.endTime=#{newTask.endTime},task.description=#{newTask.description},task.userID=#{newTask.userID} WHERE task.taskID=#{newTask.taskID}")
     Integer updateOneTaskByClass(Task newTask);
 
-    @Update("UPDATE task SET task.taskName=#{taskName},task.taskTheme=#{taskTheme},task.priority=#{priority},task.startTime=#{startTime},task.endTime=#{endTime},task.description=#{description},task.evaluation=#{evaluation},task.userID=#{userID} WHERE task.taskID=#{taskID}")
-    Integer updateOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description, Integer evaluation);
+    @Update("UPDATE task SET task.taskName=#{taskName},task.taskTheme=#{taskTheme},task.priority=#{priority},task.startTime=#{startTime},task.endTime=#{endTime},task.description=#{description},task.userID=#{userID} WHERE task.taskID=#{taskID}")
+    Integer updateOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description);
 
     @Update("UPDATE TASK SET task.evaluation=#{evaluation} WHERE task.taskID=#{taskID}")
     Integer updateEvaluation(Integer taskID,Integer evaluation);

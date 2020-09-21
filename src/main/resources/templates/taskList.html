@@ -196,7 +196,7 @@
                                             <td>
                                                 <a th:href="@{'taskList/delete/'+${task.taskID}}" class="btn btn-sm btn-danger deleteBtn">删除</a>
                                                 <a th:href="@{'taskList/update/'+${task.taskID}}" class="btn btn-sm btn-primary">修改</a>
-                                                <a th:href="@{'evaluation/'+${task.taskID}}" style="background-color: yellow" class="btn btn-sm">评价</a>
+                                                <a th:if="${task.evaluation eq null}" th:href="@{'evaluation/'+${task.taskID}}" style="background-color: yellow" class="btn btn-sm">评价</a>
                                             </td>
                                         </tr>
                                     </tbody>
