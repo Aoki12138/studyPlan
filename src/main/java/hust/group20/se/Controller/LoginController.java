@@ -1,5 +1,8 @@
 package hust.group20.se.Controller;
 
+import eu.bitwalker.useragentutils.Browser;
+import eu.bitwalker.useragentutils.OperatingSystem;
+import eu.bitwalker.useragentutils.UserAgent;
 import hust.group20.se.Entity.User;
 import hust.group20.se.Service.UserService;
 import org.apache.catalina.security.SecurityUtil;
@@ -15,8 +18,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 
@@ -41,6 +50,35 @@ public class LoginController {
 
         try{
             subject.login(token);
+
+            User user=(User) SecurityUtils.getSubject().getPrincipal();
+
+            HttpServletRequest request=((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+
+            String ua=request.getHeader("User-Agent");
+            UserAgent userAgent =UserAgent.parseUserAgentString(ua);
+            Browser browser=userAgent.getBrowser();
+            OperatingSystem os=userAgent.getOperatingSystem();
+
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.sss");//设置日期格式
+
+            String recording=df.format(new Date())+"   User:"+user.getUserNickName()+"   Browser:"+browser.getName()+"   OperatingSystem:"+os.getName()+"\n";
+
+            FileOutputStream fileOutputStream=null;
+            File file=new File("D:\\signInLog.txt");
+
+            try{
+                if(file.exists()){
+                    file.createNewFile();
+                }
+                fileOutputStream =new FileOutputStream(file,true);
+                fileOutputStream.write(recording.getBytes());
+                fileOutputStream.flush();
+                fileOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             return "redirect:/";
         }catch (UnknownAccountException e) {
 
@@ -85,6 +123,8 @@ public class LoginController {
     public String redirectIndex(HttpSession session) {
         User user=(User) SecurityUtils.getSubject().getPrincipal();
         session.setAttribute("user",user);
+
+
         return "redirect:/user/index";
     }
 

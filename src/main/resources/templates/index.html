@@ -47,100 +47,103 @@
     </div>
 
     <section>
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="/images/user.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">[[${session['user'].userNickName}]]</div>
-                    <div class="email">[[${session['user'].userEmail}]]</div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li>
-                                <a class="js-right-sidebar" data-close="true">
-                                    <i class="material-icons">settings</i>
-                                    Themes
-                                </a>
-                            </li>
-                            <li role="separator" class="divider">
-                            </li>
-                            <li>
-                                <a th:href="@{/logout}">
-                                    <i class="material-icons">input</i>
-                                    Sign Out
-                                </a>
-                            </li>
-                        </ul>
+        <div th:replace="~{/commons/rightBar.html::rightBar}">
+        </div>
+
+        <div>
+            <aside id="leftsidebar" class="sidebar">
+                <!-- User Info -->
+                <div class="user-info">
+                    <div class="image">
+                        <img src="/images/user.png" width="48" height="48" alt="User" />
+                    </div>
+                    <div class="info-container">
+                        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">[[${session['user'].userNickName}]]</div>
+                        <div class="email">[[${session['user'].userEmail}]]</div>
+                        <div class="btn-group user-helper-dropdown">
+                            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a class="js-right-sidebar" data-close="true">
+                                        <i class="material-icons">settings</i>
+                                        Themes
+                                    </a>
+                                </li>
+                                <li role="separator" class="divider">
+                                </li>
+                                <li>
+                                    <a th:href="@{/logout}">
+                                        <i class="material-icons">input</i>
+                                        Sign Out
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- #User Info -->
+                <!-- #User Info -->
 
-            <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">WELCOME TO OUR SYSTEM</li>
-                    <li class="active">
-                        <a href="/user/index">
-                            <i class="material-icons">home</i>
-                            <span>Main</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/user/taskList">
-                            <i class="material-icons">widgets</i>
-                            <span>Task List</span>
-                        </a>
-                    </li>
+                <!-- Menu -->
+                <div class="menu">
+                    <ul class="list">
+                        <li class="header">WELCOME TO OUR SYSTEM</li>
+                        <li class="active">
+                            <a href="/user/index">
+                                <i class="material-icons">home</i>
+                                <span>Main</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/taskList">
+                                <i class="material-icons">widgets</i>
+                                <span>Task List</span>
+                            </a>
+                        </li>
 
-                    <li>
-                        <a  class="menu-toggle">
-                            <i class="material-icons">pie_chart</i>
-                            <span>Analysis</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="/user/analysis/day">ByDay</a>
-                            </li>
-                            <li>
-                                <a href="/user/analysis/week">ByWeek</a>
-                            </li>
-                        </ul>
-                    </li>
+                        <li>
+                            <a  class="menu-toggle">
+                                <i class="material-icons">pie_chart</i>
+                                <span>Analysis</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li>
+                                    <a href="/user/analysis/day">ByDay</a>
+                                </li>
+                                <li>
+                                    <a href="/user/analysis/week">ByWeek</a>
+                                </li>
+                            </ul>
+                        </li>
 
-                    <li>
-                        <a href="/user/diaryList">
-                            <i class="material-icons">today</i>
-                            <span>Diary</span>
-                        </a>
-                    </li>
+                        <li>
+                            <a href="/user/diaryList">
+                                <i class="material-icons">today</i>
+                                <span>Diary</span>
+                            </a>
+                        </li>
 
 
-                    <li>
-                        <a href="/user/userInfo">
-                            <i class="material-icons">assignment</i>
-                            <span>UserInfo</span>
-                        </a>
-                    </li>
+                        <li>
+                            <a href="/user/userInfo">
+                                <i class="material-icons">assignment</i>
+                                <span>UserInfo</span>
+                            </a>
+                        </li>
 
-                </ul>
-            </div>
-            <!-- #Menu -->
-            <!-- Footer -->
-            <div class="legal">
-                <div class="copyright">
-                    &copy; 2020 <a>Form Good Study Habit</a>.
+                    </ul>
                 </div>
-                <div class="version">
-                    <b>Version: </b> 0.0.1
+                <!-- #Menu -->
+                <!-- Footer -->
+                <div class="legal">
+                    <div class="copyright">
+                        &copy; 2020 <a>Form Good Study Habit</a>.
+                    </div>
+                    <div class="version">
+                        <b>Version: </b> 0.0.1
+                    </div>
                 </div>
-            </div>
-            <!-- #Footer -->
-        </aside>
-        <div th:replace="~{/commons/rightBar.html::rightBar}">
+                <!-- #Footer -->
+            </aside>
         </div>
     </section>
 
@@ -215,7 +218,7 @@
                                 当前任务 <small>Current Task</small>
                             </h2>
                         </div>
-                        <div class="body">
+                        <div class="body" th:if="${presentTask} ne null">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
                                 <li role="presentation" class="active"><a href="#profile" data-toggle="tab">当前任务</a></li>
@@ -225,13 +228,16 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="profile">
-                                    <b>Home Content</b>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                        Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                        pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                        sadipscing mel.
-                                    </p>
+                                    <b>任务名</b>
+                                    <p>[[${presentTask.taskName}]]</p>
+                                    <b>主题</b>
+                                    <p>[[${presentTask.taskTheme}]]</p>
+                                    <b>起始时间</b>
+                                    <p>[[${#dates.format(presentTask.startTime,'HH:mm:ss')}]]</p>
+                                    <b>终止时间</b>
+                                    <p>[[${#dates.format(presentTask.endTime,'HH:mm:ss')}]]</p>
+                                    <b>描述</b>
+                                    <p>[[${presentTask.description}]]</p>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="clock">
                                     <div class="col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
@@ -266,6 +272,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="body" th:if="${presentTask} eq null">
+                            <b>当前无任务</b>
                         </div>
                     </div>
                 </div>
@@ -505,7 +514,101 @@
     </script>
 
     <!--倒计时-->
-    <script src="/js/time_script.js"></script>
+<!--    <script src="/js/time_script.js"></script>-->
+    <script>
+        var Flipper = /** @class */ (function () {
+            function Flipper(node, currentTime, nextTime) {
+                this.isFlipping = false;
+                this.duration = 600;
+                this.flipNode = node;
+                this.frontNode = node.querySelector(".front");
+                this.backNode = node.querySelector(".back");
+                this.setFrontTime(currentTime);
+                this.setBackTime(nextTime);
+            }
+
+            Flipper.prototype.setFrontTime = function (time) {
+                this.frontNode.dataset.number = time;
+            };
+            Flipper.prototype.setBackTime = function (time) {
+                this.backNode.dataset.number = time;
+            };
+            Flipper.prototype.flipDown = function (currentTime, nextTime) {
+                var _this = this;
+                if (this.isFlipping) {
+                    return false;
+                }
+                this.isFlipping = true;
+                this.setFrontTime(currentTime);
+                this.setBackTime(nextTime);
+                this.flipNode.classList.add("running");
+                setTimeout(function () {
+                    _this.flipNode.classList.remove("running");
+                    _this.isFlipping = false;
+                    _this.setFrontTime(nextTime);
+                }, this.duration);
+            };
+            return Flipper;
+        }());
+        var getTimeFromDate = function (date) {
+            return date
+                .toTimeString()
+                .slice(0, 8)
+                .split(":")
+                .join("");
+        };
+        var flips = document.querySelectorAll(".flip");
+
+
+        var endTime = new Date("[[${presentTask.endTime}]]");
+        var startTime= new Date();
+
+
+        var timeDifferenceFix=57600000;
+
+        var nowTimeStr = getTimeFromDate(new Date(endTime.getTime()-startTime.getTime() +timeDifferenceFix));
+        var nextTimeStr = getTimeFromDate(new Date(endTime.getTime()-startTime.getTime()+timeDifferenceFix-1000));
+        var flippers = Array.from(flips).map(function (flip, i) {
+            return new Flipper(flip, nowTimeStr[i], nextTimeStr[i]);
+        });
+
+        for (var i = 0; i < flippers.length; i++) {
+            if (nowTimeStr[i] === nextTimeStr[i]) {
+                continue;
+            }
+            flippers[i].flipDown(nowTimeStr[i], nextTimeStr[i]);
+        };
+
+
+        var test=new Date(endTime.getTime()-startTime.getTime()+timeDifferenceFix-1000)
+
+        setInterval(function () {
+
+            var nowTime=test;
+            var nextTime=new Date(test.getTime()-1000);
+
+            test=new Date(test.getTime()-1000);
+
+            var nowTimeStr = getTimeFromDate(nowTime);
+
+            var nextTimeStr = getTimeFromDate(nextTime);
+            for (var i = 0; i < flippers.length; i++) {
+                if (nowTimeStr[i] === nextTimeStr[i]) {
+                    continue;
+                }
+                flippers[i].flipDown(nowTimeStr[i], nextTimeStr[i]);
+            }
+
+            //可以写alert！！！！！！！
+            //
+            //
+            //
+            //
+            //
+            //
+        }, 1000);
+
+    </script>
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
