@@ -55,4 +55,6 @@ public interface TaskService {
     Integer addDiary(String diaryName,String keyword,String color,String body,Integer userID);
 
     Integer updateOneTaskByAttributes(Integer userID, Integer taskID, String taskName, String taskTheme, Priority priority, Timestamp startTime, Timestamp endTime, String description);
+
+    List<User> getAllUser();
 }

@@ -3,6 +3,7 @@ package hust.group20.se.Mapper;
 import hust.group20.se.Entity.Diary;
 import hust.group20.se.Entity.Priority;
 import hust.group20.se.Entity.Task;
+import hust.group20.se.Entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.sql.Time;
@@ -33,6 +34,9 @@ public interface TaskMapper {
     @Select("SELECT * FROM TASK")
     List<Task> getAllTasks();
 
+    @Select("SELECT * FROM USER")
+    List<User> getAllUser();
+
     @Select("SELECT * FROM TASK WHERE (task.startTime>#{now} AND task.startTime<#{lasttime} AND task.userID=#{userID}) ")
     List<Task> getUnfinTasks(Integer userID,Timestamp now,Timestamp lasttime);
 
@@ -47,7 +51,6 @@ public interface TaskMapper {
 
     @Select("SELECT max(task.taskID) FROM task")
     Integer getMaxID();
-
 
     @Select("SELECT * FROM task WHERE task.taskID=#{taskID}")
     Task getTaskByTaskID(Integer taskID);
