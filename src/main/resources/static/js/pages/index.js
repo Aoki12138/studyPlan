@@ -26,7 +26,7 @@ function initDonutChart() {
         element: 'donut_chart',
         data: [{
             label: '数学',
-            value: 37
+            value: 30
         }, {
             label: '英语',
             value: 30

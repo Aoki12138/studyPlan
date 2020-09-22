@@ -60,6 +60,23 @@ public class UserController {
 
         model.addAttribute("UnfinTasks",UnfinTasks);
         model.addAttribute("FinTasks",FinTasks);
+
+        List<Long> timeoftheme = taskService.getTimeOfTheme(FinTasks);
+        if(totaltime2==0){
+            model.addAttribute("timeofMath",0);
+            model.addAttribute("timeofEnglish",0);
+            model.addAttribute("timeofPolitics",0);
+            model.addAttribute("timeofSpeciality",0);
+            model.addAttribute("timeofOther",0);
+        }
+        else{
+            model.addAttribute("timeofMath",timeoftheme.get(0)*100/totaltime2);
+            model.addAttribute("timeofEnglish",timeoftheme.get(1)*100/totaltime2);
+            model.addAttribute("timeofPolitics",timeoftheme.get(2)*100/totaltime2);
+            model.addAttribute("timeofSpeciality",timeoftheme.get(3)*100/totaltime2);
+            model.addAttribute("timeofOther",timeoftheme.get(4)*100/totaltime2);
+        }
+
         return "index";
     }
 

@@ -203,4 +203,34 @@ public class TaskServiceImpl implements TaskService {
     public List<User> getAllUser(){
         return taskMapper.getAllUser();
     }
+
+    @Override
+    public List<Long> getTimeOfTheme(List<Task> tasks){
+        List<Long> time = new ArrayList<Long>(5);
+        for(int i=0;i<5;i++){
+            time.add(0L);
+        }
+        for(int i=0;!tasks.isEmpty() && i < tasks.size();i++){
+            switch (tasks.get(i).getTaskTheme()){
+                case"数学":
+                    time.set(0,time.get(0)+(tasks.get(i).getEndTime().getTime()-tasks.get(i).getStartTime().getTime()));
+                    break;
+                case"英语":
+                    time.set(1,time.get(1)+(tasks.get(i).getEndTime().getTime()-tasks.get(i).getStartTime().getTime()));
+                    break;
+                case"政治":
+                    time.set(2,time.get(2)+(tasks.get(i).getEndTime().getTime()-tasks.get(i).getStartTime().getTime()));
+                    break;
+                case"专业课":
+                    time.set(3,time.get(3)+(tasks.get(i).getEndTime().getTime()-tasks.get(i).getStartTime().getTime()));
+                    break;
+                case"其他":
+                    time.set(4,time.get(4)+(tasks.get(i).getEndTime().getTime()-tasks.get(i).getStartTime().getTime()));
+                    break;
+                default:
+                    System.out.println("未知主题");
+            }
+        }
+        return time;
+    }
 }
