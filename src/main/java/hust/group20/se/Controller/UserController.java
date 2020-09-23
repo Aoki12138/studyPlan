@@ -142,6 +142,7 @@ public class UserController {
         Integer num=user.getUserID();
         Calendar cal1 = Calendar.getInstance();
         cal1.setTime(new Date());
+        cal1.add(Calendar.DATE,-1);
         cal1.set(Calendar.SECOND, 0);
         cal1.set(Calendar.MINUTE, 0);
         cal1.set(Calendar.HOUR_OF_DAY, 0);
@@ -150,6 +151,7 @@ public class UserController {
 
         Calendar cal2 = Calendar.getInstance();
         cal2.setTime(new Date());
+        cal2.add(Calendar.DATE,-1);
         cal2.set(Calendar.SECOND, 59);
         cal2.set(Calendar.MINUTE, 59);
         cal2.set(Calendar.HOUR_OF_DAY, 23);
