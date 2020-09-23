@@ -56,4 +56,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### yml for db password change###
+*.yml
 >>>>>>> 69a3def... <INIT>
