@@ -102,15 +102,16 @@ public class TaskServiceImpl implements TaskService {
         Integer fulltime= new Integer(0);
         Integer efftime= new Integer(0);
         int length=list.size();
-        int i=0;
-        for(i=0;i<=length-1;i++){
+
+        for(int i=0;i<length;i++){
             Long starttime=list.get(i).getStartTime().getTime();
             Long endtime=list.get(i).getEndTime().getTime();
             int times=(int)((endtime-starttime)/1000);
-            int efftimes=times*(list.get(i).getEvaluation())/100;
+            int efftimes=times*(list.get(i).getEvaNum())/100;
             fulltime=fulltime+Integer.valueOf(times);
             efftime=efftime+Integer.valueOf(efftimes);
         }
+
         timeList.add(fulltime);
         timeList.add(efftime);
         return timeList;

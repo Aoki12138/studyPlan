@@ -112,6 +112,8 @@ public class Task {
         this.evaluation = evaluation;
     }
 
+    public Integer getEvaNum(){return evaluation==null?0:evaluation;}
+
     public Integer getUserID() {
         return userID;
     }

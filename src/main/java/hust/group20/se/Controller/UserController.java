@@ -280,7 +280,7 @@ public class UserController {
 
                 int firstEnd = (secondstart > today.getTime())?(int) ((morningStart - secondstart)/1000) :21600;
 
-                int efffirstEnd = firstEnd * (secondTasks.get(0).getEvaluation()) / 100;
+                int efffirstEnd = firstEnd * (secondTasks.get(0).getEvaNum()) / 100;
 
                 firstEndtime +=firstEnd;
                 efffirstEndtime +=efffirstEnd;
@@ -297,9 +297,9 @@ public class UserController {
                 thirdTasks.get(0).setStartTime(noon);
                 if(thirdstart<today.getTime()){
                     int firstEnd=21600;
-                    int efffirstEnd=firstEnd*(thirdTasks.get(0).getEvaluation())/100;
+                    int efffirstEnd=firstEnd*(thirdTasks.get(0).getEvaNum())/100;
                     int secondEnd=21600;
-                    int effsecondEnd=secondEnd*(thirdTasks.get(0).getEvaluation())/100;
+                    int effsecondEnd=secondEnd*(thirdTasks.get(0).getEvaNum())/100;
 
                     firstEndtime+=firstEnd;
                     efffirstEndtime+=efffirstEnd;
@@ -307,9 +307,9 @@ public class UserController {
                     effsecondEndtime+=effsecondEnd;
                 }else if (thirdstart< morning.getTime()){
                     int firstEnd=(int)((morning.getTime()-thirdstart)/1000);
-                    int efffirstEnd=firstEnd*(thirdTasks.get(0).getEvaluation())/100;
+                    int efffirstEnd=firstEnd*(thirdTasks.get(0).getEvaNum())/100;
                     int secondEnd=21600;
-                    int effsecondEnd=secondEnd*(thirdTasks.get(0).getEvaluation())/100;
+                    int effsecondEnd=secondEnd*(thirdTasks.get(0).getEvaNum())/100;
 
                     firstEndtime+=firstEnd;
                     efffirstEndtime+=efffirstEnd;
@@ -317,7 +317,7 @@ public class UserController {
                     effsecondEndtime+=effsecondEnd;
                 }else {
                     int secondEnd=(int)((noon.getTime()-thirdstart)/1000);
-                    int effsecondEnd=secondEnd*(thirdTasks.get(0).getEvaluation())/100;
+                    int effsecondEnd=secondEnd*(thirdTasks.get(0).getEvaNum())/100;
 
                     secondEndtime+=secondEnd;
                     effsecondEndtime+=effsecondEnd;
@@ -335,11 +335,11 @@ public class UserController {
                 fourthTasks.get(0).setStartTime(evening);
                 if (fourthstart<today.getTime()){
                     int firstEnd=21600;
-                    int efffirstEnd=firstEnd*(fourthTasks.get(0).getEvaluation())/100;
+                    int efffirstEnd=firstEnd*(fourthTasks.get(0).getEvaNum())/100;
                     int secondEnd=21600;
-                    int effsecondEnd=secondEnd*(fourthTasks.get(0).getEvaluation())/100;
+                    int effsecondEnd=secondEnd*(fourthTasks.get(0).getEvaNum())/100;
                     int thirdEnd=21600;
-                    int effthirdEnd=thirdEnd*(fourthTasks.get(0).getEvaluation())/100;
+                    int effthirdEnd=thirdEnd*(fourthTasks.get(0).getEvaNum())/100;
 
                     firstEndtime+=firstEnd;
                     efffirstEndtime+=efffirstEnd;
@@ -349,11 +349,11 @@ public class UserController {
                     effthirdEndtime+=effthirdEnd;
                 }else if(fourthstart< morning.getTime()){
                     int firstEnd=(int)((morning.getTime()-fourthstart)/100);
-                    int efffirstEnd=firstEnd*(fourthTasks.get(0).getEvaluation())/100;
+                    int efffirstEnd=firstEnd*(fourthTasks.get(0).getEvaNum())/100;
                     int secondEnd=21600;
-                    int effsecondEnd=secondEnd*(fourthTasks.get(0).getEvaluation())/100;
+                    int effsecondEnd=secondEnd*(fourthTasks.get(0).getEvaNum())/100;
                     int thirdEnd=21600;
-                    int effthirdEnd=thirdEnd*(fourthTasks.get(0).getEvaluation())/100;
+                    int effthirdEnd=thirdEnd*(fourthTasks.get(0).getEvaNum())/100;
 
                     firstEndtime+=firstEnd;
                     efffirstEndtime+=efffirstEnd;
@@ -364,9 +364,9 @@ public class UserController {
 
                 }else if(fourthstart< noon.getTime()){
                     int secondEnd=(int)((noon.getTime()-fourthstart)/1000);
-                    int effsecondEnd=secondEnd*(fourthTasks.get(0).getEvaluation())/100;
+                    int effsecondEnd=secondEnd*(fourthTasks.get(0).getEvaNum())/100;
                     int thirdEnd=21600;
-                    int effthirdEnd=thirdEnd*(fourthTasks.get(0).getEvaluation())/100;
+                    int effthirdEnd=thirdEnd*(fourthTasks.get(0).getEvaNum())/100;
 
                     secondEndtime+=secondEnd;
                     effsecondEndtime+=effsecondEnd;
@@ -374,7 +374,7 @@ public class UserController {
                     effthirdEndtime+=effthirdEnd;
                 }else {
                     int thirdEnd=(int)((evening.getTime()-fourthstart)/1000);
-                    int effthirdEnd=thirdEnd*(fourthTasks.get(0).getEvaluation())/100;
+                    int effthirdEnd=thirdEnd*(fourthTasks.get(0).getEvaNum())/100;
 
                     thirdEndtime+=thirdEnd;
                     effthirdEndtime+=effthirdEnd;

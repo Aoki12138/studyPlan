@@ -515,7 +515,7 @@
 
     <!--倒计时-->
 <!--    <script src="/js/time_script.js"></script>-->
-    <script>
+    <script th:if="${presentTask} ne null">
         var Flipper = /** @class */ (function () {
             function Flipper(node, currentTime, nextTime) {
                 this.isFlipping = false;
