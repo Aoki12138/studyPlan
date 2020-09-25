@@ -517,7 +517,7 @@ public class UserController {
 
         for (int i = 0; i < Times.length; i++) {
             if (Times[i] != 0) {
-                if ((double) (effTimes[i] / Times[i]) < Time_min_value) {
+                if ( ((double)effTimes[i] / (double)Times[i]) < Time_min_value) {
                     Time_min_value = (double) (effTimes[i]) / (double)(Times[i]);
                     Time_min = i + 1;
                 }
@@ -529,19 +529,19 @@ public class UserController {
                 model.addAttribute("WORSTWEEK", "其他");
                 break;
             case 1:
-                model.addAttribute("WORSTWEEK", "本周学习时间最短的科目为：数学");
+                model.addAttribute("WORSTWEEK", "本周学习效率最低的科目为：数学");
                 break;
             case 2:
-                model.addAttribute("WORSTWEEK", "本周学习时间最短的科目为：英语");
+                model.addAttribute("WORSTWEEK", "本周学习效率最低的科目为：英语");
                 break;
             case 3:
-                model.addAttribute("WORSTWEEK", "本周学习时间最短的科目为：政治");
+                model.addAttribute("WORSTWEEK", "本周学习效率最低的科目为：政治");
                 break;
             case 4:
-                model.addAttribute("WORSTWEEK", "本周学习时间最短的科目为：专业课");
+                model.addAttribute("WORSTWEEK", "本周学习效率最低的科目为：专业课");
                 break;
             case 5:
-                model.addAttribute("WORSTWEEK", "本周学习时间最短的科目为：其他");
+                model.addAttribute("WORSTWEEK", "本周学习效率最低的科目为：其他");
                 break;
 
             default:
